@@ -106,3 +106,9 @@
 .asset-card:nth-child(5) .discount{left:12px!important}
 .asset-card:nth-child(6) .discount{left:11px!important}
 .heart{top:10px!important;right:8px!important}
+/* CHART PATH REGISTERED FROM REFERENCE AS SVG CODE */
+.chart{left:14px!important;top:77px!important;width:423px!important;height:104px!important}
+/* SCREENING PASS — zone registration from browser/reference sweep */
+.sidebar{transform:translate(4px,4px)!important}
+.topchart{transform:translate(1px,4px)!important}
+.trustbar{transform:translate(4px,3px)!important}
