@@ -1,0 +1,44 @@
+{
+  "overall": {
+    "mae": 19.037,
+    "within10": 71.83,
+    "exact": 17.14
+  },
+  "zones": {
+    "header": {
+      "mae": 10.758,
+      "within10": 85.12,
+      "exact": 13.16
+    },
+    "sidebar": {
+      "mae": 21.841,
+      "within10": 70.95,
+      "exact": 2.73
+    },
+    "hero": {
+      "mae": 21.203,
+      "within10": 70.7,
+      "exact": 30.16
+    },
+    "chart": {
+      "mae": 21.522,
+      "within10": 78.23,
+      "exact": 4.64
+    },
+    "verticals": {
+      "mae": 15.633,
+      "within10": 71.17,
+      "exact": 51.44
+    },
+    "featured": {
+      "mae": 18.99,
+      "within10": 68.9,
+      "exact": 4.71
+    },
+    "footer": {
+      "mae": 21.616,
+      "within10": 61.07,
+      "exact": 0.29
+    }
+  }
+}
