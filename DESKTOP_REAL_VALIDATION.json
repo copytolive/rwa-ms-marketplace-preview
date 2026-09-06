@@ -1,0 +1,13 @@
+{
+  "viewport": "1672x941",
+  "mode": "desktop-real-code",
+  "full_screenshot_as_layout": false,
+  "ai_generated_images": false,
+  "data_ai_zones": 7,
+  "buttons": 32,
+  "svg_charts": 1,
+  "mae": 28.214,
+  "rmse": 60.434,
+  "exact_pixel_percent": 7.347,
+  "within_10_rgb_percent": 53.742
+}
