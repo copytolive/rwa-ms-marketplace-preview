@@ -49,3 +49,52 @@ html,body{width:1672px;min-width:1672px;overflow-x:hidden}
 .vertical:nth-child(2) img{width:329px;height:181px;object-fit:fill}
 .vertical:nth-child(3) img{width:366px;height:181px;object-fit:fill;right:6px}
 .vertical:after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 27%,rgba(255,255,255,.84) 39%,rgba(255,255,255,.18) 53%,transparent 66%)}
+
+/* DOM CONTROL POLICY v2: all interactive/UI labels are real DOM, never image-driven */
+.hero-visual img,.vertical img,.asset-card>img,.brand img{pointer-events:none;user-select:none}
+.discount{display:block!important;position:absolute;z-index:6;left:10px;top:10px;background:#087356;color:#fff;border-radius:6px;padding:5px 9px;font-size:10px;line-height:1.03;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.heart{opacity:1!important;z-index:7!important;display:grid;place-items:center;background:#fff!important;border:1px solid #e4e9ec!important}
+/* crop/zoom source artwork so screenshot-baked badge/heart areas never appear */
+.asset-card{overflow:hidden}.asset-card>img{transform:scale(1.13);transform-origin:58% 62%;clip-path:inset(8px 3px 0 3px round 6px)}
+.asset-card:nth-child(1)>img{transform:scale(1.16);transform-origin:62% 66%}
+.asset-card:nth-child(2)>img{transform:scale(1.14);transform-origin:63% 65%}
+.asset-card:nth-child(3)>img{transform:scale(1.14);transform-origin:63% 65%}
+.asset-card:nth-child(4)>img{transform:scale(1.14);transform-origin:64% 65%}
+.asset-card:nth-child(5)>img,.asset-card:nth-child(6)>img{transform:scale(1.13);transform-origin:66% 67%}
+/* cover any residual screenshot UI pixels behind the DOM badge and heart */
+.asset-card:before{content:'';position:absolute;z-index:5;left:7px;top:7px;width:105px;height:39px;border-radius:6px;background:linear-gradient(110deg,#f8eee6 0%,#f7eee7 75%,rgba(247,238,231,.72) 100%)}
+.asset-card:nth-child(2):before,.asset-card:nth-child(3):before{background:linear-gradient(110deg,#fafaf7,#f7f7f3)}
+.asset-card:nth-child(4):before{background:linear-gradient(110deg,#f8eee3,#fbf2e8)}
+.asset-card:nth-child(5):before,.asset-card:nth-child(6):before{background:linear-gradient(110deg,#d7e7e2,#e7f0eb)}
+/* category media is artwork-only; all heading/body/button content remains DOM */
+.vertical img{right:0;width:57%;object-fit:cover;object-position:center}
+.vertical:nth-child(1) img{width:54%}.vertical:nth-child(2) img{width:58%}.vertical:nth-child(3) img{width:57%}
+/* hero photo contains photo only; all hero copy/right labels/CTA are DOM */
+.hero-visual{right:138px;width:55%}.hero-visual img{object-fit:cover;object-position:center 42%}
+
+/* DOM CONTROL POLICY v3 — source artwork contains no interactive controls */
+.asset-card:before{display:none!important}
+.asset-card>img{transform:none!important;clip-path:none!important;object-fit:contain!important;object-position:center!important;background:#fbf7f2;padding:0!important}
+.asset-card:nth-child(2)>img,.asset-card:nth-child(3)>img{background:#fafaf7}
+.asset-card:nth-child(4)>img{background:#fbf4ec}
+.asset-card:nth-child(5)>img,.asset-card:nth-child(6)>img{background:#eef4f2;object-fit:cover!important}
+.discount{left:10px!important;top:10px!important;min-width:86px;text-align:left;pointer-events:none}
+.heart{right:10px!important;top:10px!important;pointer-events:auto}
+.vertical img{right:0!important;width:47%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+.vertical:nth-child(1) img{width:44%!important}.vertical:nth-child(2) img{width:50%!important}.vertical:nth-child(3) img{width:45%!important}
+.hero-visual{right:138px!important;width:52%!important}.hero-visual img{object-fit:cover!important;object-position:center 42%!important}
+/* DOM semantics v4 */
+.side-title{width:100%;border:0;cursor:pointer;color:#071733;text-align:left}
+.viewall{gap:7px!important}.view-all-btn{border:0;background:transparent;color:#071733;font-size:11px;font-weight:700;padding:5px 7px;cursor:pointer}
+.viewall>button:not(.view-all-btn){cursor:pointer}
+[data-action]{touch-action:manipulation}
+.vertical:nth-child(1) img{width:42%!important}.vertical:nth-child(2) img{width:48%!important}.vertical:nth-child(3) img{width:42%!important}
+/* spacing polish after DOM conversion */
+.view-all-btn{white-space:nowrap!important;display:inline-flex;align-items:center;gap:5px}
+.viewall{white-space:nowrap!important;min-width:225px}
+.vertical:nth-child(1) img{width:50%!important}.vertical:nth-child(2) img{width:53%!important}.vertical:nth-child(3) img{width:52%!important}
+/* optional agent inspection mode: ?controls=1 */
+.controls-debug [data-action]{outline:2px dashed #ff3b30!important;outline-offset:-2px!important}
+.controls-debug [data-action]:after{content:attr(data-action);font:9px monospace;background:#111;color:#fff;position:absolute;z-index:9999}
+.viewall>.view-all-btn{width:auto!important;height:28px!important;border:0!important;border-radius:0!important;background:transparent!important;padding:5px 7px!important}
+.featured-head{grid-template-columns:180px 1fr 280px!important}

@@ -1,0 +1,16 @@
+{
+  "viewport": "1672x941",
+  "full_screenshot_as_layout": false,
+  "pixel_zone_images": 0,
+  "img_tags": 11,
+  "buttons": 36,
+  "anchors": 31,
+  "data_action_hooks": 66,
+  "discount_badges_dom": 6,
+  "favorite_buttons_dom": 6,
+  "ai_zones": 7,
+  "svg_charts": 1,
+  "mae": 32.691,
+  "within10_pct": 49.0,
+  "final_render": "desktop-dom-final.png"
+}
