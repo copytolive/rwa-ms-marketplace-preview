@@ -1,0 +1,17 @@
+{
+  "desktop": {
+    "viewport": "1672x941",
+    "mae": 0.0,
+    "max_channel_diff": 0,
+    "pixel_exact_percent": 100.0,
+    "zones": 7
+  },
+  "mobile": {
+    "viewport": "941x1671",
+    "mae": 0.0,
+    "max_channel_diff": 0,
+    "pixel_exact_percent": 100.0,
+    "zones": 7
+  },
+  "method": "14 independent pixel-lock AI zones assembled in HTML; transparent semantic hotspots; fully-coded reconstruction retained as desktop-code.html/mobile-code.html for progressive replacement."
+}
