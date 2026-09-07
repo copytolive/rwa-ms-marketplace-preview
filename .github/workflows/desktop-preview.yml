@@ -8,6 +8,7 @@ on:
       - 'desktop.html'
       - 'desktop-clean.css'
       - 'desktop-finetune.css'
+      - 'desktop-pass.css'
       - 'desktop-preview.html'
       - 'assets/**'
       - 'scripts/**'
