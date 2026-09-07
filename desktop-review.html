@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RWA.ms Desktop Review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:14px Arial,sans-serif;background:#111;color:#fff}.bar{position:sticky;top:0;z-index:5;background:#171717;padding:12px 16px;display:flex;gap:18px;align-items:center;border-bottom:1px solid #333}.bar b{font-size:16px}.metrics{opacity:.85}.panel{padding:14px}.panel h2{font-size:14px;margin:0 0 8px}.frame{width:1672px;height:941px;border:0;background:#fff;display:block}.img{display:block;width:1672px;height:auto;background:#fff}.row{display:flex;gap:14px;align-items:flex-start;overflow:auto}.half{min-width:840px}.half img{width:836px;height:auto;display:block}.note{color:#aaa;margin:6px 0 0}
+</style>
+</head>
+<body>
+<div class="bar"><b>RWA.ms Desktop Precision Review</b><span class="metrics" id="metrics">Loading validation…</span></div>
+<section class="panel"><h2>Live real-code HTML</h2><iframe class="frame" src="desktop-preview.html"></iframe></section>
+<section class="panel"><div class="row"><div class="half"><h2>Reference</h2><img src="desktop-reference.png"></div><div class="half"><h2>Latest browser render</h2><img src="desktop-preview-current.png"></div></div></section>
+<section class="panel"><h2>Pixel diff heatmap</h2><img class="img" src="desktop-diff-current.png"><p class="note">Red = remaining pixel difference. Black = exact.</p></section>
+<script>
+fetch('desktop-validation-current.json?'+Date.now()).then(r=>r.json()).then(v=>{const o=v.overall;document.getElementById('metrics').textContent=`MAE ${o.mae} · ≤10 ${o.within10_percent}% · exact ${o.exact_percent}%`;}).catch(()=>{});
+</script>
+</body>
+</html>
