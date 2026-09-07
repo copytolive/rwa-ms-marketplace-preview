@@ -1,0 +1,57 @@
+/* Responsive safety layer for the real-DOM mobile layout. */
+html,body{max-width:100%;overflow-x:hidden}
+.mobile-page{width:min(941px,100%)!important;max-width:100%!important;overflow-x:hidden}
+.m-search input{min-width:0}
+.m-usp{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.m-usp>div{min-width:0}
+.m-verticals{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.m-verticals article,.m-verticals article>div{min-width:0}
+.m-verticals button{max-width:100%;white-space:nowrap}
+.m-stats{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.m-stats>div{min-width:0}
+.m-assets{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.m-assets article{min-width:0}
+.m-featured-head,.m-tabs{min-width:0}
+.bottomnav{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.bottomnav button{min-width:0;overflow:hidden}
+@media(max-width:600px){
+  .m-hero-copy{width:61%!important}
+  .m-hero .eyebrow{font-size:10px!important;letter-spacing:2.3px!important}
+  .m-hero h1{font-size:31px!important}
+  .m-hero p{font-size:11px!important;line-height:1.35!important}
+  .m-hero button{font-size:13px!important;padding:10px 14px!important}
+  .m-hero button i{margin-left:10px!important}
+  .m-hero-right{right:0!important;width:82px!important;padding:24px 6px 12px 12px!important;gap:12px!important}
+  .m-hero-right span{font-size:7px!important;letter-spacing:1px!important}
+  .m-hero-right b{font-size:12px!important}
+  .m-hero-right em{font-size:10px!important}
+  .dots{left:64%!important;bottom:9px!important;gap:5px!important}
+  .dots i{width:8px!important;height:8px!important}
+  .m-usp{padding:8px 10px!important}
+  .m-usp>div{gap:5px!important;padding:0 3px!important}
+  .m-usp i{font-size:21px!important}
+  .m-usp span{font-size:9px!important}
+  .m-verticals article>div{width:74%!important}
+  .m-verticals h3{font-size:18px!important}
+  .m-verticals p{font-size:10px!important;line-height:1.25!important}
+  .m-verticals button{font-size:11px!important;padding:8px 10px!important}
+  .ranges button{font-size:10px!important;padding:6px 7px!important}
+  .m-price{gap:8px!important}
+  .m-price strong{font-size:30px!important}
+  .m-price span{font-size:16px!important}
+  .m-stats>div{padding:8px 7px!important;grid-template-columns:18px 1fr!important}
+  .m-stats span{font-size:9px!important}
+  .m-stats strong{font-size:16px!important}
+  .m-stats strong b{display:block;margin-left:0!important;font-size:12px!important}
+  .m-stats small{font-size:9px!important}
+  .m-featured-head h2{font-size:18px!important;white-space:nowrap}
+  .m-tabs{overflow:hidden}
+  .m-tabs button{font-size:9px!important;padding:5px 6px!important;white-space:nowrap}
+  .m-assets h4{font-size:11px!important}
+  .m-assets p{font-size:9px!important}
+  .m-assets article>strong{font-size:13px!important}
+  .m-assets small{font-size:8px!important}
+  .bottomnav{height:78px!important}
+  .bottomnav button{font-size:10px!important;gap:4px!important;white-space:nowrap;text-overflow:ellipsis}
+  .bottomnav i{font-size:19px!important}
+}
