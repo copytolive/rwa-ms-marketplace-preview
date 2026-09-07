@@ -40,7 +40,7 @@ const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
 const desktopCss=['desktop-finetune.css?v=091907a','desktop-pass.css?v=091907a','desktop-final.css?v=092105a'];
-const mobileCss=['mobile-responsive.css?v=092224a'];
+const mobileCss=['mobile-responsive.css?v=092224a','mobile-polish.css?v=092307a'];
 function inject(frame,files){
   const doc=frame.contentDocument;
   if(!doc)return;
@@ -51,7 +51,12 @@ function inject(frame,files){
   }
 }
 desktopFrame.addEventListener('load',()=>inject(desktopFrame,desktopCss));
-mobileFrame.addEventListener('load',()=>inject(mobileFrame,mobileCss));
+mobileFrame.addEventListener('load',()=>{
+  const doc=mobileFrame.contentDocument;
+  const hero=doc?.querySelector('.m-hero>img');
+  if(hero)hero.src='assets/hero_photo_exact.png';
+  inject(mobileFrame,mobileCss);
+});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
 function isMobileViewport(){
   if(forced==='mobile')return true;
