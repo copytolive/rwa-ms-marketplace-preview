@@ -10,6 +10,8 @@ on:
       - 'desktop-finetune.css'
       - 'desktop-preview.html'
       - 'assets/**'
+      - 'scripts/**'
+      - '.github/workflows/desktop-preview.yml'
 
 permissions:
   contents: write
@@ -39,41 +41,48 @@ jobs:
           python3 - <<'PY'
           from PIL import Image
           import numpy as np, json
-
           ref=np.array(Image.open('desktop-reference.png').convert('RGB'))
           cur=np.array(Image.open('desktop-preview-current.png').convert('RGB'))
           cur=cur[:ref.shape[0],:ref.shape[1]]
           d=np.abs(ref.astype(np.int16)-cur.astype(np.int16))
-          mae=float(d.mean())
-          within10=float((d.max(axis=2)<=10).mean()*100)
-          exact=float((d.max(axis=2)==0).mean()*100)
           zones={
-            'header':(0,0,1672,64),
-            'sidebar':(0,64,237,941),
-            'hero':(237,72,1188,392),
-            'chart':(1202,72,1655,392),
-            'verticals':(237,404,1647,585),
-            'featured':(237,597,1655,863),
+            'header':(0,0,1672,64),'sidebar':(0,64,237,941),
+            'hero':(237,72,1188,392),'chart':(1202,72,1655,392),
+            'verticals':(237,404,1647,585),'featured':(237,597,1655,863),
             'footer':(237,875,1655,927),
           }
-          out={'overall':{'mae':round(mae,3),'within10_percent':round(within10,2),'exact_percent':round(exact,2)},'zones':{}}
+          out={'overall':{
+            'mae':round(float(d.mean()),3),
+            'within10_percent':round(float((d.max(axis=2)<=10).mean()*100),2),
+            'exact_percent':round(float((d.max(axis=2)==0).mean()*100),2)},'zones':{}}
           for name,(x1,y1,x2,y2) in zones.items():
             z=d[y1:y2,x1:x2]
-            out['zones'][name]={
-              'mae':round(float(z.mean()),3),
-              'within10_percent':round(float((z.max(axis=2)<=10).mean()*100),2),
-              'exact_percent':round(float((z.max(axis=2)==0).mean()*100),2),
-            }
+            out['zones'][name]={'mae':round(float(z.mean()),3),'within10_percent':round(float((z.max(axis=2)<=10).mean()*100),2),'exact_percent':round(float((z.max(axis=2)==0).mean()*100),2)}
           open('desktop-validation-current.json','w').write(json.dumps(out,indent=2))
-
           heat=np.clip(d.max(axis=2)*4,0,255).astype(np.uint8)
-          heat_rgb=np.zeros_like(ref)
-          heat_rgb[:,:,0]=heat
+          heat_rgb=np.zeros_like(ref);heat_rgb[:,:,0]=heat
           Image.fromarray(heat_rgb).save('desktop-diff-current.png')
-
           sep=np.full((ref.shape[0],12,3),255,dtype=np.uint8)
-          comp=np.concatenate([ref,sep,cur,sep,heat_rgb],axis=1)
-          Image.fromarray(comp).save('desktop-compare-current.jpg',quality=88,optimize=True)
+          Image.fromarray(np.concatenate([ref,sep,cur,sep,heat_rgb],axis=1)).save('desktop-compare-current.jpg',quality=88,optimize=True)
+          print(json.dumps(out,indent=2))
+          PY
+
+      - name: Sweep hero typography candidates
+        run: |
+          npm install --no-save puppeteer-core@24 >/dev/null 2>&1
+          node scripts/desktop_sweep.js
+          python3 - <<'PY'
+          from PIL import Image
+          import numpy as np, json, glob, os
+          ref=np.array(Image.open('desktop-reference.png').convert('RGB'))[72:392,237:1188]
+          results=[]
+          for p in glob.glob('/tmp/rwa-sweep/hero_*.png'):
+            cur=np.array(Image.open(p).convert('RGB'))[:320,:951]
+            d=np.abs(ref.astype(np.int16)-cur.astype(np.int16))
+            results.append({'file':os.path.basename(p),'mae':round(float(d.mean()),4),'within10_percent':round(float((d.max(axis=2)<=10).mean()*100),2)})
+          results.sort(key=lambda x:x['mae'])
+          out={'best':results[:15],'tested':len(results)}
+          open('desktop-hero-sweep.json','w').write(json.dumps(out,indent=2))
           print(json.dumps(out,indent=2))
           PY
 
@@ -81,6 +90,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add desktop-preview-current.png desktop-diff-current.png desktop-compare-current.jpg desktop-validation-current.json
+          git add desktop-preview-current.png desktop-diff-current.png desktop-compare-current.jpg desktop-validation-current.json desktop-hero-sweep.json
           git diff --cached --quiet || git commit -m 'Update desktop browser validation evidence'
           git push
