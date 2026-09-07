@@ -1,0 +1,10 @@
+/* Final Mac-Chrome precision layer. Loaded after finetune/pass; real DOM/SVG only. */
+
+/* Sidebar registration measured from the 1672x941 Mac reference. */
+.sidebar{transform:translate(4px,1px)!important}
+
+/* Reference CTA palette: geometry was already near-exact; only fill was too bright. */
+.hero-copy button,.vertical .v-copy button{
+  background:linear-gradient(90deg,#064d3a 0%,#155f48 52%,#125e47 100%)!important;
+}
+.trustbar>button{background:#014a36!important}
