@@ -2,4 +2,4 @@
 .topbar,.sidebar,.hero,.verticals{font-family:"Avenir Next",Arial,sans-serif}
 .topchart{font-family:"Helvetica Neue",Arial,sans-serif}
 .featured,.trustbar{font-family:"Microsoft Sans Serif",Arial,sans-serif}
-.hero h1{font-family:Georgia,"Times New Roman",serif}
+.hero h1{font-family:Georgia,"Times New Roman",serif;transform:translateY(-7px) scaleX(.90)!important}
