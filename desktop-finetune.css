@@ -1,0 +1,6 @@
+/* Precision overrides validated against the 1672x941 desktop reference. */
+.topbar,.sidebar,.hero,.verticals{font-family:"Avenir Next",Arial,sans-serif}
+.topchart{font-family:"Helvetica Neue",Arial,sans-serif}
+.featured,.trustbar{font-family:"Microsoft Sans Serif",Arial,sans-serif}
+/* Keep the editorial serif headline as real text. */
+.hero h1{font-family:Georgia,"Times New Roman",serif}
