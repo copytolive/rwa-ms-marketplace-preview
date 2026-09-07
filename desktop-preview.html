@@ -16,10 +16,12 @@ const frame=document.getElementById('preview');
 frame.addEventListener('load',()=>{
   const doc=frame.contentDocument;
   if(!doc)return;
-  const link=doc.createElement('link');
-  link.rel='stylesheet';
-  link.href='desktop-finetune.css?v=091812a3';
-  doc.head.appendChild(link);
+  for(const href of ['desktop-finetune.css?v=091907a','desktop-pass.css?v=091907a']){
+    const link=doc.createElement('link');
+    link.rel='stylesheet';
+    link.href=href;
+    doc.head.appendChild(link);
+  }
 });
 </script>
 </body>
