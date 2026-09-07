@@ -17,3 +17,4 @@
 .detail{top:199px!important}
 /* Subtle architectural texture in code only; no screenshot background. */
 .hero:before{content:"";position:absolute;z-index:0;left:0;top:0;width:484px;height:282px;pointer-events:none;background:linear-gradient(112deg,transparent 0 24%,rgba(203,199,193,.10) 24.2% 25%,transparent 25.2% 47%,rgba(211,207,201,.12) 47.2% 48%,transparent 48.2%),linear-gradient(68deg,transparent 0 58%,rgba(214,210,204,.10) 58.2% 59%,transparent 59.2%)}
+/* validation trigger 2026-09-07 */
