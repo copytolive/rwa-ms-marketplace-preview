@@ -16,7 +16,7 @@ const frame=document.getElementById('preview');
 frame.addEventListener('load',()=>{
   const doc=frame.contentDocument;
   if(!doc)return;
-  for(const href of ['desktop-finetune.css?v=091907a','desktop-pass.css?v=091907a']){
+  for(const href of ['desktop-finetune.css?v=091907a','desktop-pass.css?v=091907a','desktop-final.css?v=092105a']){
     const link=doc.createElement('link');
     link.rel='stylesheet';
     link.href=href;
