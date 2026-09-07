@@ -1,0 +1,86 @@
+name: Desktop Preview Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'desktop.html'
+      - 'desktop-clean.css'
+      - 'desktop-finetune.css'
+      - 'desktop-preview.html'
+      - 'assets/**'
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 8000 >/tmp/rwa-http.log 2>&1 &
+          sleep 2
+
+      - name: Render real-code desktop in Chrome
+        run: |
+          google-chrome --headless --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=1672,941 --force-device-scale-factor=1 \
+            --virtual-time-budget=3500 \
+            --screenshot=desktop-preview-current.png \
+            http://127.0.0.1:8000/desktop-preview.html
+
+      - name: Pixel screening against reference
+        run: |
+          python3 -m pip install --quiet pillow numpy
+          python3 - <<'PY'
+          from PIL import Image
+          import numpy as np, json
+
+          ref=np.array(Image.open('desktop-reference.png').convert('RGB'))
+          cur=np.array(Image.open('desktop-preview-current.png').convert('RGB'))
+          cur=cur[:ref.shape[0],:ref.shape[1]]
+          d=np.abs(ref.astype(np.int16)-cur.astype(np.int16))
+          mae=float(d.mean())
+          within10=float((d.max(axis=2)<=10).mean()*100)
+          exact=float((d.max(axis=2)==0).mean()*100)
+          zones={
+            'header':(0,0,1672,64),
+            'sidebar':(0,64,237,941),
+            'hero':(237,72,1188,392),
+            'chart':(1202,72,1655,392),
+            'verticals':(237,404,1647,585),
+            'featured':(237,597,1655,863),
+            'footer':(237,875,1655,927),
+          }
+          out={'overall':{'mae':round(mae,3),'within10_percent':round(within10,2),'exact_percent':round(exact,2)},'zones':{}}
+          for name,(x1,y1,x2,y2) in zones.items():
+            z=d[y1:y2,x1:x2]
+            out['zones'][name]={
+              'mae':round(float(z.mean()),3),
+              'within10_percent':round(float((z.max(axis=2)<=10).mean()*100),2),
+              'exact_percent':round(float((z.max(axis=2)==0).mean()*100),2),
+            }
+          open('desktop-validation-current.json','w').write(json.dumps(out,indent=2))
+
+          heat=np.clip(d.max(axis=2)*4,0,255).astype(np.uint8)
+          heat_rgb=np.zeros_like(ref)
+          heat_rgb[:,:,0]=heat
+          Image.fromarray(heat_rgb).save('desktop-diff-current.png')
+
+          sep=np.full((ref.shape[0],12,3),255,dtype=np.uint8)
+          comp=np.concatenate([ref,sep,cur,sep,heat_rgb],axis=1)
+          Image.fromarray(comp).save('desktop-compare-current.jpg',quality=88,optimize=True)
+          print(json.dumps(out,indent=2))
+          PY
+
+      - name: Commit browser evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-preview-current.png desktop-diff-current.png desktop-compare-current.jpg desktop-validation-current.json
+          git diff --cached --quiet || git commit -m 'Update desktop browser validation evidence'
+          git push
