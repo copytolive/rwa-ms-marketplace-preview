@@ -1,8 +1,14 @@
 /* Final measured precision layer. Keep all UI as live DOM/SVG/code. */
-.hero-benefits{height:37px!important}
+.hero-benefits{height:35px!important}
+.hero-right{padding-top:54px!important;gap:23px!important}
 .hero-right em{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT",cursive!important;font-size:15px!important;line-height:1.05!important;font-weight:600!important;transform:rotate(-8deg)!important}
+.chart{left:12px!important;top:73px!important}
+.stat-grid>div{padding:11px 10px!important}
+.featured-head{top:7px!important}
+.trustbar{padding-left:18px!important}
+.side-group>a i{width:14px!important;height:14px!important}
 
-/* Reference-style outline icons for hero benefits. */
+/* Reference-style outline icons for hero benefits, chart stats and trust footer. */
 .hero-benefits i,.stat-grid i,.trustbar>div i,.trust-note>i{font-size:0!important;display:inline-block!important;background-color:#007354!important;-webkit-mask:var(--ico) center/contain no-repeat!important;mask:var(--ico) center/contain no-repeat!important}
 .hero-benefits i{width:20px!important;height:20px!important}
 .hero-benefits span:nth-child(1) i,.trustbar>div:nth-child(5) i{--ico:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjkiLz48cGF0aCBkPSJNMyAxMmgxOE0xMiAzaC4wMUMxNSA3IDE2LjUgMTAgMTYgMTJjLS41IDQtMiA3LTQgOU0xMiAzYy0zIDQtNC41IDctNCA5cy41IDUgNCA5Ii8+PC9zdmc+")}
@@ -12,4 +18,4 @@
 .hero-benefits span:nth-child(5) i{--ico:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTIwIDRjLTkgMC0xNSA0LTE2IDEzIDYgMSAxMS0xIDE0LTYgMS0yIDItNCAyLTdaIi8+PHBhdGggZD0iTTQgMjBjMy02IDctOSAxMi0xMiIvPjwvc3ZnPg==")}
 .stat-grid>div:nth-child(1) i{--ico:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTQgMTdsNi02IDQgNCA2LTgiLz48cGF0aCBkPSJNMTUgN2g1djUiLz48L3N2Zz4=")}
 .stat-grid i{width:18px!important;height:18px!important}
-.trustbar>div i,.trust-note>i{width:21px!important;height:21px!important}
+.trustbar>div i,.trust-note>i{width:18px!important;height:18px!important}
