@@ -3,4 +3,17 @@
 .topchart{font-family:"Helvetica Neue",Arial,sans-serif}
 .featured,.trustbar{font-family:"Microsoft Sans Serif",Arial,sans-serif}
 /* Keep the editorial serif headline as real text. */
-.hero h1{font-family:Georgia,"Times New Roman",serif}
+.hero h1{font-family:Georgia,"Times New Roman",serif;transform:translateY(-5px) scaleX(.93)}
+/* Hero registration: measured against reference text/button bounds. */
+.eyebrow{transform:translateY(-5px) scaleX(.96)}
+.hero p{transform:translateY(-5px);line-height:1.4}
+.hero-copy button{left:1px;top:193px}
+/* Featured lower-half registration: all labels remain real DOM text. */
+.asset-card h4{top:114px!important}
+.asset-card p{top:123px!important;font-size:10px!important;line-height:11px!important}
+.asset-card>strong{top:149px!important}
+.holders{top:165px!important}
+.sold{top:184px!important}
+.detail{top:199px!important}
+/* Subtle architectural texture in code only; no screenshot background. */
+.hero:before{content:"";position:absolute;z-index:0;left:0;top:0;width:484px;height:282px;pointer-events:none;background:linear-gradient(112deg,transparent 0 24%,rgba(203,199,193,.10) 24.2% 25%,transparent 25.2% 47%,rgba(211,207,201,.12) 47.2% 48%,transparent 48.2%),linear-gradient(68deg,transparent 0 58%,rgba(214,210,204,.10) 58.2% 59%,transparent 59.2%)}
