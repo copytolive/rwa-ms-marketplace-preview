@@ -1,0 +1,54 @@
+name: Desktop Zone Sweep
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/zone_sweep.js'
+      - '.github/workflows/desktop-zone-sweep.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start local server
+        run: |
+          python3 -m http.server 8000 >/tmp/rwa-http.log 2>&1 &
+          sleep 2
+      - name: Render zone candidates
+        run: |
+          npm install --no-save puppeteer-core@24 >/dev/null 2>&1
+          node scripts/zone_sweep.js
+      - name: Score zone candidates
+        run: |
+          python3 -m pip install --quiet pillow numpy
+          python3 - <<'PY'
+          from PIL import Image
+          import numpy as np,glob,os,json,re
+          ref=np.array(Image.open('desktop-reference.png').convert('RGB'))
+          zones={'sidebar':(0,64,237,941),'chart':(1202,72,1655,392),'verticals':(237,404,1647,585),'featured':(237,597,1655,863),'footer':(237,875,1655,927),'heroimg':(237,72,1188,392)}
+          out={}
+          for name,box in zones.items():
+            x1,y1,x2,y2=box; rz=ref[y1:y2,x1:x2]
+            scores=[]
+            for p in glob.glob(f'/tmp/rwa-zonesweep/{name}_*.png') if name!='heroimg' else glob.glob('/tmp/rwa-zonesweep/heroimg_*.png'):
+              cur=np.array(Image.open(p).convert('RGB'))[:rz.shape[0],:rz.shape[1]]
+              d=np.abs(rz.astype(np.int16)-cur.astype(np.int16))
+              scores.append({'file':os.path.basename(p),'mae':round(float(d.mean()),4),'within10':round(float((d.max(axis=2)<=10).mean()*100),2)})
+            scores.sort(key=lambda x:x['mae'])
+            out[name]=scores[:12]
+          open('desktop-zone-sweep.json','w').write(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          PY
+      - name: Commit sweep result
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-zone-sweep.json
+          git diff --cached --quiet || git commit -m 'Update desktop zone sweep result'
+          git push
