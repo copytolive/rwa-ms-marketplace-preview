@@ -33,7 +33,7 @@ const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
 const desktopCss=['desktop-finetune.css?v=091907a','desktop-pass.css?v=091907a','desktop-final.css?v=092105a'];
-const mobileCss=['mobile-responsive.css?v=092224a','mobile-polish.css?v=092307b'];
+const mobileCss=['mobile-responsive.css?v=092224a','mobile-polish.css?v=092307b','mobile-app.css?v=092401a'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 const S={
  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>',
@@ -59,7 +59,7 @@ function polishMobile(doc){
   replaceNode(nav[1],'bag');replaceNode(nav[2],'building');replaceNode(nav[3],'game');replaceNode(nav[4],'user');
 }
 desktopFrame.addEventListener('load',()=>inject(desktopFrame,desktopCss));
-mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc);inject(mobileFrame,mobileCss)});
+mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc);inject(mobileFrame,mobileCss);if(!doc.querySelector('script[data-mobile-app]')){const script=doc.createElement('script');script.src='mobile-app.js?v=092401a';script.dataset.mobileApp='1';doc.body.appendChild(script)}});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
 function isMobileViewport(){if(forced==='mobile')return true;if(forced==='desktop')return false;const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1023||(uaMobile&&viewportWidth()<1366)}
 function fitDesktop(){if(isMobileViewport())return;const vw=viewportWidth();const scale=Math.min(1,vw/1672);desktopStage.style.transform=`scale(${scale})`;desktopStage.style.marginLeft=vw>1672?`${(vw-1672)/2}px`:'0px';desktopWrap.style.height=`${Math.ceil(941*scale)}px`}
