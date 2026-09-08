@@ -1,19 +1,19 @@
 {
   "overall": {
-    "mae": 48.287,
-    "within10_percent": 43.32,
-    "exact_percent": 2.17
+    "mae": 48.35,
+    "within10_percent": 43.03,
+    "exact_percent": 2.14
   },
   "zones": {
     "header": {
-      "mae": 17.564,
-      "within10_percent": 78.77,
-      "exact_percent": 7.3
+      "mae": 17.629,
+      "within10_percent": 78.39,
+      "exact_percent": 7.31
     },
     "sidebar": {
-      "mae": 50.212,
-      "within10_percent": 31.89,
-      "exact_percent": 0.7
+      "mae": 50.65,
+      "within10_percent": 29.86,
+      "exact_percent": 0.53
     },
     "hero": {
       "mae": 79.354,
