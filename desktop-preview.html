@@ -25,10 +25,10 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=12&drawer=20260909n" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=13&drawer=20260909o" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
-const BUILD='20260909n';
+const BUILD='20260909o';
 try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);history.replaceState(null,'',u)}}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
@@ -37,7 +37,7 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209n','desktop-pass.css?v=092209n','desktop-final.css?v=092209n'];
+const desktopCss=['desktop-finetune.css?v=092209o','desktop-pass.css?v=092209o','desktop-final.css?v=092209o'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function installDesktopDrawer(doc){
   if(!doc||doc.documentElement.dataset.rwaDrawer==='1')return;
@@ -91,11 +91,13 @@ function installDesktopDrawer(doc){
     .hero-visual{left:484px!important;right:auto!important;width:314px!important}
     .hero-visual img{width:314px!important;height:282px!important;object-fit:fill!important}
     .topchart .chart{width:calc(100% - 42px)!important}
-    .verticals{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-    .vertical:after{background:linear-gradient(90deg,#fff 0%,#fff 52%,rgba(255,255,255,.98) 60%,rgba(255,255,255,.78) 68%,rgba(255,255,255,.18) 78%,transparent 86%)!important}
-    .vertical:nth-child(1)>img{left:auto!important;right:0!important;width:288px!important;object-fit:fill!important}
-    .vertical:nth-child(2)>img{left:auto!important;right:0!important;width:304px!important;object-fit:fill!important}
-    .vertical:nth-child(3)>img{left:auto!important;right:0!important;width:326px!important;object-fit:fill!important}
+    .verticals{height:181px!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:10px!important}
+    .product-vertical{height:181px!important;background:#f8fbfa!important}
+    .product-vertical:after{background:linear-gradient(145deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.66) 57%,rgba(0,116,84,.05) 100%)!important}
+    .product-vertical>img{display:none!important}
+    .product-vertical .v-copy{left:15px!important;top:14px!important;width:calc(100% - 30px)!important}
+    .product-vertical .v-copy h3{font-size:22px!important;transform:none!important}
+    .product-vertical .v-copy p{font-size:11px!important}
     .asset-grid{width:auto!important;margin-left:9px!important;margin-right:9px!important;grid-template-columns:repeat(6,minmax(0,1fr))!important}
     .trustbar{width:100%!important}
     .topbar{padding-left:18px!important;z-index:20!important}
