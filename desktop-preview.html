@@ -25,10 +25,10 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=10&drawer=20260909l" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=11&drawer=20260909m" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
-const BUILD='20260909l';
+const BUILD='20260909m';
 try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);history.replaceState(null,'',u)}}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
@@ -37,7 +37,7 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209l','desktop-pass.css?v=092209l','desktop-final.css?v=092209l'];
+const desktopCss=['desktop-finetune.css?v=092209m','desktop-pass.css?v=092209m','desktop-final.css?v=092209m'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function installDesktopDrawer(doc){
   if(!doc||doc.documentElement.dataset.rwaDrawer==='1')return;
@@ -98,7 +98,7 @@ function installDesktopDrawer(doc){
     .rwa-menu-toggle i{font-size:17px!important}
     .rwa-drawer-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;border:0!important;background:rgba(5,18,29,.46)!important;opacity:0!important;pointer-events:none!important;z-index:9998!important;transition:opacity .22s ease!important;cursor:pointer!important}
     .rwa-drawer-overlay[data-open="true"]{opacity:1!important;pointer-events:auto!important}
-    .sidebar{position:fixed!important;left:0!important;top:0!important;width:326px!important;height:100vh!important;max-height:none!important;margin:0!important;padding:0 12px 14px!important;display:flex!important;flex-direction:column!important;gap:7px!important;background:#f8fbfa!important;border-right:1px solid #e4ece9!important;box-shadow:0 18px 48px rgba(4,22,34,.22)!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;z-index:10000!important;isolation:isolate!important;transform:translateX(-102%)!important;transition:transform .24s cubic-bezier(.2,.8,.2,1)!important}
+    .sidebar{position:fixed!important;left:0!important;top:0!important;bottom:auto!important;width:326px!important;height:auto!important;min-height:0!important;max-height:100vh!important;margin:0!important;padding:0 12px 14px!important;display:flex!important;flex-direction:column!important;gap:7px!important;background:#f8fbfa!important;border-right:1px solid #e4ece9!important;border-bottom:1px solid #e4ece9!important;border-radius:0 0 14px 0!important;box-shadow:0 18px 48px rgba(4,22,34,.22)!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;z-index:10000!important;isolation:isolate!important;transform:translateX(-102%)!important;transition:transform .24s cubic-bezier(.2,.8,.2,1)!important}
     .sidebar::-webkit-scrollbar{display:none!important}
     .sidebar[data-drawer-open="true"]{transform:translateX(0)!important}
     .rwa-drawer-head{position:sticky!important;top:0!important;z-index:3!important;min-height:82px!important;margin:0 -12px 5px!important;padding:12px 14px!important;background:#fff!important;border-bottom:1px solid #e7eeec!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex:0 0 auto!important}
