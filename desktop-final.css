@@ -27,6 +27,10 @@
   margin:6px 0 0!important;
 }
 
+/* Header must stay above the full-page shell so menu/cart/nav controls remain clickable. */
+.topbar{z-index:20!important}
+.shell{z-index:1!important}
+
 /* Reference CTA palette: geometry was already near-exact; only fill was too bright. */
 .hero-copy button,.vertical .v-copy button{
   background:linear-gradient(90deg,#064d3a 0%,#155f48 52%,#125e47 100%)!important;
