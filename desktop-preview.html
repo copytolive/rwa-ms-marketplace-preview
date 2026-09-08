@@ -22,7 +22,7 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=2&sidebar=20260909b" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=2&sidebar=20260909c" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 const desktopFrame=document.getElementById('desktopFrame');
@@ -60,8 +60,8 @@ function polishDesktop(doc){
 
   const groups=[
     {key:'marketplace',label:'Marketplace',icon:'fa-bag-shopping',open:true,items:["Women's Clothing",'Shoes',"Men's Clothing",'Bags & Luggage','Beauty & Health']},
-    {key:'property',label:'Property',icon:'fa-building',open:true,items:['TownHouse','Rumah Sakit','Apartment & Condominium','Villa & Resort','Hotel','Office Tower','Kawasan Industri','Mixed Use Development']},
-    {key:'games',label:'Games',icon:'fa-gamepad',open:true,items:['Game Land','Characters','Weapons','Skins','Loot Boxes','Game Tokens','Esports Assets','Metaverse Assets']},
+    {key:'property',label:'Property',icon:'fa-building',open:false,items:['TownHouse','Rumah Sakit','Apartment & Condominium','Villa & Resort','Hotel','Office Tower','Kawasan Industri','Mixed Use Development']},
+    {key:'games',label:'Games',icon:'fa-gamepad',open:false,items:['Game Land','Characters','Weapons','Skins','Loot Boxes','Game Tokens','Esports Assets','Metaverse Assets']},
     {key:'ai-models',label:'AI Models',icon:'fa-brain',open:false,items:['Trading','Finance','Medical','Legal','Property','Agriculture','Manufacturing','Logistics','Automotive','Energy','Construction','Retail','Education','Insurance','Security','Research']},
     {key:'franchise',label:'Franchise',icon:'fa-store',open:false,items:['Food & Beverage','Coffee & Cafe','Education','Fitness','Services','Petcare']},
     {key:'apps',label:'Apps',icon:'fa-table-cells-large',open:false,items:['Business','Finance','Social','Media','Health','Education','Travel','Food']}
@@ -83,7 +83,17 @@ function polishDesktop(doc){
     section.innerHTML=`<button aria-expanded="${group.open?'true':'false'}" class="side-title" type="button"><span><i class="fa-solid ${group.icon}" aria-hidden="true"></i>${group.label}</span><i class="rwa-chevron fa-solid ${group.open?'fa-chevron-up':'fa-chevron-down'}"></i></button>${links}`;
     setExpanded(section,group.open);
     const title=section.querySelector('.side-title');
-    title.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();setExpanded(section,section.dataset.expanded!=='true')},true);
+    title.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const shouldOpen=section.dataset.expanded!=='true';
+      if(shouldOpen){
+        sidebar.querySelectorAll(':scope > .side-group.side-group-canonical').forEach(other=>{
+          if(other!==section)setExpanded(other,false);
+        });
+      }
+      setExpanded(section,shouldOpen);
+    },true);
     section.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
     before.before(section);
   }
