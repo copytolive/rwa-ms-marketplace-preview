@@ -1,4 +1,39 @@
+@import url("category-marketplace-generated.css?v=092209p");
+@import url("category-property-generated.css?v=092209p");
+@import url("category-games-generated.css?v=092209p");
+@import url("category-ai-models-generated.css?v=092209p");
+@import url("category-franchise-generated.css?v=092209p");
+@import url("category-apps-generated.css?v=092209p");
+
 /* Final Mac-Chrome precision layer. Loaded after finetune/pass; real DOM/SVG only. */
+
+/* Category imagery: six product-specific generated backgrounds with a shared readable text fade. */
+.verticals .product-vertical[data-product]{
+  isolation:isolate!important;
+  background:#f8fbfa!important;
+}
+.verticals .product-vertical[data-product]::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  pointer-events:none!important;
+  transform:scale(1.01)!important;
+}
+.verticals .product-vertical[data-product]::after{
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.99) 0%,rgba(255,255,255,.97) 26%,rgba(255,255,255,.89) 40%,rgba(255,255,255,.60) 54%,rgba(255,255,255,.18) 70%,rgba(255,255,255,.02) 88%,transparent 100%)!important;
+}
+.verticals .product-vertical[data-product] .product-art{display:none!important}
+.verticals .product-vertical[data-product] .v-copy{
+  z-index:4!important;
+  width:59%!important;
+}
+.verticals .product-vertical[data-product] .v-copy h3,
+.verticals .product-vertical[data-product] .v-copy p{position:relative!important;z-index:4!important}
 
 /* Sidebar registration measured from the 1672x941 Mac reference. */
 .sidebar{
