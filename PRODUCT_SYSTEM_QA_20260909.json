@@ -1,0 +1,121 @@
+{
+  "build": "20260909r",
+  "checks": {
+    "desktop_categories": {
+      "count": 6,
+      "cta": [
+        "Explore Marketplace",
+        "Explore Property",
+        "Explore Games",
+        "Explore AI Models",
+        "Explore Franchise",
+        "Explore Apps"
+      ]
+    },
+    "desktop_header": {
+      "nav": [
+        "Products",
+        "RWA Token",
+        "Community",
+        "Learn",
+        "Verified"
+      ],
+      "search": "Search RWA assets, AI models, franchises, apps..."
+    },
+    "desktop_featured_all": {
+      "count": 6,
+      "categories": [
+        "marketplace",
+        "property",
+        "games",
+        "ai-models",
+        "franchise",
+        "apps"
+      ]
+    },
+    "desktop_filter_ai": {
+      "title": "Featured AI Models",
+      "count": 6
+    },
+    "desktop_search": {
+      "count": 1,
+      "first": "PawHouse Petcare"
+    },
+    "drawer": {
+      "open": "true",
+      "expanded_count": 1,
+      "apps": "true",
+      "closed": "false"
+    },
+    "desktop_hero_rotation": {
+      "initial": "Property",
+      "later": "Games",
+      "changed": true,
+      "cta": "Explore All Products"
+    },
+    "desktop_widths": {
+      "1200": {
+        "outer_no_overflow": true,
+        "cards": 6
+      },
+      "1280": {
+        "outer_no_overflow": true,
+        "cards": 6
+      },
+      "1366": {
+        "outer_no_overflow": true,
+        "cards": 6
+      },
+      "1440": {
+        "outer_no_overflow": true,
+        "cards": 6
+      },
+      "1600": {
+        "outer_no_overflow": true,
+        "cards": 6
+      },
+      "1920": {
+        "outer_no_overflow": true,
+        "cards": 6
+      }
+    },
+    "mobile": {
+      "390x844": {
+        "categories": 6,
+        "tabs": 7,
+        "dots": 6,
+        "assets": 6,
+        "no_overflow": true,
+        "search": "Search products, AI models, apps...",
+        "ai_filter_count": 6,
+        "ai_tab": "AI Models"
+      },
+      "430x932": {
+        "categories": 6,
+        "tabs": 7,
+        "dots": 6,
+        "assets": 6,
+        "no_overflow": true,
+        "search": "Search products, AI models, apps..."
+      },
+      "768x1024": {
+        "categories": 6,
+        "tabs": 7,
+        "dots": 6,
+        "assets": 6,
+        "no_overflow": true,
+        "search": "Search products, AI models, apps..."
+      },
+      "1024x900": {
+        "categories": 6,
+        "tabs": 7,
+        "dots": 6,
+        "assets": 6,
+        "no_overflow": true,
+        "search": "Search products, AI models, apps..."
+      }
+    }
+  },
+  "status": "PASS",
+  "failures": []
+}

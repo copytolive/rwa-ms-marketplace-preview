@@ -1,16 +1,12 @@
 (()=>{
 const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)];
 const hero=qs('.m-hero'),heroImg=qs('.m-hero>img'),heroCopy=qs('.m-hero-copy'),heroBtn=qs('.m-hero button');
-const slides=[
- {category:'marketplace',label:'Marketplace',eyebrow:'OWN • INVEST • TRADE • LIVE REAL',title:'Iconic Assets.<br>Real Ownership.',body:'Discover tokenized fashion and collectibles.<br>Choose an asset, inspect details, then select it.',cta:'Explore Marketplace',image:'assets/hero-person-mobile.jpg',pos:'50% 48%'},
- {category:'property',label:'Property',eyebrow:'REAL ASSETS • DIGITAL ACCESS',title:'Property.<br>Made Accessible.',body:'Explore tokenized real estate with clear pricing,<br>holder progress and mobile-first selection.',cta:'Explore Property',image:'assets/media5_clean.png',pos:'58% 50%'},
- {category:'games',label:'Games',eyebrow:'COLLECT • OWN • PARTICIPATE',title:'Digital Worlds.<br>Real Ownership.',body:'Browse game-linked assets and choose the ones<br>you want to follow from the same marketplace.',cta:'Explore Games',image:'assets/media6_clean.png',pos:'58% 50%'}
-];
+const slides=(window.RWA_CATEGORIES||[]).map(c=>({category:c.key,label:c.label,eyebrow:'OWN • INVEST • TRADE • LIVE REAL',title:c.heroTitle.replace('. ','<br>'),body:c.heroBody,cta:`Explore ${c.label}`,image:`assets/category-${c.key}.webp`,pos:'62% 50%'}));
 if(!hero||!heroImg||!heroCopy||!heroBtn)return;
 let slide=0,timer,startX=0;
 const dots=qsa('.dots i');
 let label=hero.querySelector('.hero-slide-label');if(!label){label=document.createElement('div');label.className='hero-slide-label';hero.appendChild(label)}
-function tabFor(category){return qsa('.m-tabs button').find(b=>b.textContent.trim().toLowerCase()===(category==='marketplace'?'marketplace':category==='property'?'property':'games'))}
+function tabFor(category){return qsa('.m-tabs button').find(b=>(b.dataset.value||'')===category)}
 function showSlide(i,animate=true){slide=(i+slides.length)%slides.length;const s=slides[slide];if(animate)hero.classList.add('is-changing');setTimeout(()=>{heroImg.src=s.image;hero.style.setProperty('--hero-pos',s.pos);qs('.m-hero .eyebrow').innerHTML=s.eyebrow;qs('.m-hero h1').innerHTML=s.title;qs('.m-hero p').innerHTML=s.body;heroBtn.innerHTML=`${s.cta} <i class="fa-solid fa-arrow-right-long"></i>`;heroBtn.dataset.category=s.category;label.textContent=s.label;dots.forEach((d,n)=>d.classList.toggle('active',n===slide));hero.classList.remove('is-changing')},animate?120:0)}
 function restart(){clearInterval(timer);timer=setInterval(()=>showSlide(slide+1),6500)}
 dots.forEach((d,i)=>{d.setAttribute('role','button');d.tabIndex=0;d.setAttribute('aria-label',`Show hero slide ${i+1}`);d.addEventListener('click',()=>{showSlide(i);restart()});d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showSlide(i);restart()}})});
@@ -19,9 +15,8 @@ hero.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX
 heroBtn.addEventListener('click',e=>{const category=heroBtn.dataset.category;if(!category)return;e.preventDefault();e.stopImmediatePropagation();const tab=tabFor(category);if(tab){tab.click();qs('.m-featured')?.scrollIntoView({behavior:'smooth',block:'start'})}},true);
 document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(timer):restart());
 showSlide(0,false);restart();
-const catImages=['assets/media1_clean.png','assets/media5_clean.png','assets/media6_clean.png'];
-const catCounts=[4,1,1];
-qsa('.m-verticals article').forEach((card,i)=>{card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`Browse ${['Marketplace','Property','Games'][i]} assets`);const img=card.querySelector('img');if(img)img.src=catImages[i];const body=card.querySelector(':scope>div');if(body&&!body.querySelector('.category-count')){const chip=document.createElement('span');chip.className='category-count';chip.textContent=`${catCounts[i]} ${catCounts[i]===1?'asset':'assets'}`;body.insertBefore(chip,body.querySelector('h3'))}const activate=()=>{const btn=card.querySelector('button');if(btn)btn.click()};card.addEventListener('click',e=>{if(e.target.closest('button'))return;activate()});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('button')){e.preventDefault();activate()}})});
+const categoryMeta=window.RWA_CATEGORIES||[];
+qsa('.m-verticals article').forEach((card,i)=>{const c=categoryMeta[i]||categoryMeta.find(x=>x.key===card.dataset.product);if(!c)return;card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',`Browse ${c.label} assets`);const img=card.querySelector('img');if(img){img.src=`assets/category-${c.key}.webp`;img.alt=c.label}const body=card.querySelector(':scope>div');if(body&&!body.querySelector('.category-count')){const n=(window.RWA_CATALOG||[]).filter(p=>p.category===c.key).length;const chip=document.createElement('span');chip.className='category-count';chip.textContent=`${n} curated assets`;body.insertBefore(chip,body.querySelector('h3'))}const activate=()=>card.querySelector('button')?.click();card.addEventListener('click',e=>{if(e.target.closest('button'))return;activate()});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('button')){e.preventDefault();activate()}})});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('button')){e.preventDefault();activate()}})});
 const favKey='rwaFavoriteAssets';
 let favorites=new Set(JSON.parse(localStorage.getItem(favKey)||'[]'));
 function persistFavorites(){localStorage.setItem(favKey,JSON.stringify([...favorites]))}
