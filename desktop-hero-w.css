@@ -1,0 +1,12 @@
+/* 20260909w — generated full-scene fashion reference, integrated as one continuous hero. */
+.hero-fashion{background:#f3ece4!important;overflow:hidden!important}
+.hero-fashion .hero-copy{left:30px!important;top:27px!important;width:430px!important;z-index:7!important}
+.hero-fashion .hero-copy p{width:405px!important;max-width:405px!important;font-size:14px!important;line-height:1.42!important}
+.hero-fashion h1{font-size:50px!important;line-height:.98!important}
+.hero-fashion .hero-actions{top:205px!important;z-index:8!important}
+.hero-fashion .fashion-visual{position:absolute!important;left:330px!important;top:0!important;width:625px!important;height:281px!important;overflow:hidden!important;background:#eee6dd url("assets/hero-fashion-scene.jpg") center center/cover no-repeat!important}
+.hero-fashion .fashion-visual>img{display:none!important}
+.hero-fashion .fashion-visual:before{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(90deg,#f3ece4 0%,rgba(243,236,228,.97) 9%,rgba(243,236,228,.78) 20%,rgba(243,236,228,.32) 34%,rgba(243,236,228,.06) 49%,transparent 62%)!important;pointer-events:none!important}
+.hero-fashion .fashion-visual:after{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(180deg,rgba(7,22,54,.01),rgba(7,22,54,.025))!important;pointer-events:none!important}
+.hero-fashion .hero-right{width:154px!important;z-index:8!important;background:rgba(239,229,219,.86)!important;backdrop-filter:blur(10px)!important;border-left:1px solid rgba(7,22,54,.05)!important}
+.fashion-caption{display:none!important}
