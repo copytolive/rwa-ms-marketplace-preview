@@ -1,7 +1,31 @@
 /* Final Mac-Chrome precision layer. Loaded after finetune/pass; real DOM/SVG only. */
 
 /* Sidebar registration measured from the 1672x941 Mac reference. */
-.sidebar{transform:translate(4px,1px)!important}
+.sidebar{
+  transform:translate(4px,1px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-content:flex-start!important;
+  gap:5px!important;
+  height:auto!important;
+  max-height:858px!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  scrollbar-width:none!important;
+  padding-bottom:8px!important;
+}
+.sidebar::-webkit-scrollbar{display:none!important}
+.sidebar>.side-group,.sidebar>.side-simple,.sidebar>.side-promo{flex-shrink:0!important}
+.sidebar>.side-group[data-accordion-group]{flex:0 0 auto!important;height:auto!important;min-height:41px!important}
+.sidebar>.side-group[data-accordion-group][data-expanded="true"]{margin-bottom:1px!important}
+.sidebar>.side-simple{flex:0 0 27px!important}
+.sidebar>.side-promo{
+  position:static!important;
+  flex:0 0 71px!important;
+  height:71px!important;
+  margin:6px 0 0!important;
+}
 
 /* Reference CTA palette: geometry was already near-exact; only fill was too bright. */
 .hero-copy button,.vertical .v-copy button{
