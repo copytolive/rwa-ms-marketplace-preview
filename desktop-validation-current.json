@@ -1,8 +1,8 @@
 {
   "overall": {
-    "mae": 48.35,
-    "within10_percent": 43.03,
-    "exact_percent": 2.14
+    "mae": 50.801,
+    "within10_percent": 43.2,
+    "exact_percent": 2.05
   },
   "zones": {
     "header": {
@@ -11,13 +11,13 @@
       "exact_percent": 7.31
     },
     "sidebar": {
-      "mae": 50.65,
-      "within10_percent": 29.86,
-      "exact_percent": 0.53
+      "mae": 47.022,
+      "within10_percent": 30.71,
+      "exact_percent": 0.35
     },
     "hero": {
-      "mae": 79.354,
-      "within10_percent": 24.09,
+      "mae": 79.278,
+      "within10_percent": 24.18,
       "exact_percent": 0.87
     },
     "chart": {
@@ -26,13 +26,13 @@
       "exact_percent": 4.82
     },
     "verticals": {
-      "mae": 65.695,
-      "within10_percent": 9.6,
-      "exact_percent": 0.44
+      "mae": 83.803,
+      "within10_percent": 10.31,
+      "exact_percent": 0.01
     },
     "featured": {
-      "mae": 45.292,
-      "within10_percent": 50.94,
+      "mae": 45.354,
+      "within10_percent": 50.83,
       "exact_percent": 3.32
     },
     "footer": {
