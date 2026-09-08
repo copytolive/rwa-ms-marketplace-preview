@@ -8,7 +8,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;min-height:100%;background:#fff}
 body{overflow-x:hidden}
-#desktopWrap{display:block;width:100%;overflow:hidden;background:#fff}
+#desktopWrap{display:block;width:100%;overflow:visible;background:#fff}
 #desktopStage{width:1672px;height:941px;transform-origin:top left;background:#fff}
 #desktopFrame{display:block;border:0;width:1672px;height:941px;background:#fff}
 #mobileWrap{display:none;width:100%;height:100dvh;overflow:hidden;background:#fff}
@@ -22,7 +22,7 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=3&sidebar=20260909e" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=4&sidebar=20260909f" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 const desktopFrame=document.getElementById('desktopFrame');
@@ -32,8 +32,21 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209e','desktop-pass.css?v=092209e','desktop-final.css?v=092209e'];
+const desktopCss=['desktop-finetune.css?v=092209f','desktop-pass.css?v=092209f','desktop-final.css?v=092209f'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
+function syncDesktopSidebar(doc){
+  if(!doc||doc.querySelector('style[data-sidebar-sync="1"]'))return;
+  const style=doc.createElement('style');
+  style.dataset.sidebarSync='1';
+  style.textContent=`
+    .sidebar{gap:5px!important;align-content:flex-start!important;justify-content:flex-start!important;padding-bottom:8px!important}
+    .sidebar>.side-promo{margin-top:6px!important;flex:0 0 71px!important}
+    .sidebar>.side-simple{flex:0 0 27px!important}
+    .sidebar>.side-group[data-accordion-group]{flex:0 0 auto!important}
+    .sidebar>.side-group[data-accordion-group][data-expanded="true"]{margin-bottom:1px!important}
+  `;
+  doc.head.appendChild(style);
+}
 const S={
  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>',
  bars:'<path d="M4 20V12h4v8M10 20V7h4v13M16 20V3h4v17M2 20h20"/>',
@@ -56,21 +69,17 @@ function polishMobile(doc){
   const nav=doc.querySelectorAll('.bottomnav button>i');
   replaceNode(nav[1],'bag');replaceNode(nav[2],'building');replaceNode(nav[3],'game');replaceNode(nav[4],'user');
 }
-desktopFrame.addEventListener('load',()=>inject(desktopFrame,desktopCss));
+desktopFrame.addEventListener('load',()=>{inject(desktopFrame,desktopCss);syncDesktopSidebar(desktopFrame.contentDocument)});
 mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc)});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
-function viewportHeight(){return Math.round(window.visualViewport?.height||document.documentElement.clientHeight||window.innerHeight||0)}
 function isMobileViewport(){if(forced==='mobile')return true;if(forced==='desktop')return false;const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1023||(uaMobile&&viewportWidth()<1366)}
 function fitDesktop(){
   if(isMobileViewport())return;
   const vw=viewportWidth();
-  const vh=viewportHeight();
-  const widthScale=vw/1672;
-  const heightScale=Math.max(.72,(vh-8)/941);
-  const scale=Math.min(1.35,widthScale,heightScale);
-  const renderedWidth=1672*scale;
+  const scale=Math.min(1.35,vw/1672);
   desktopStage.style.transform=`scale(${scale})`;
-  desktopStage.style.marginLeft=`${Math.max(0,(vw-renderedWidth)/2)}px`;
+  desktopStage.style.marginLeft='0px';
+  desktopWrap.style.width='100%';
   desktopWrap.style.height=`${Math.ceil(941*scale)}px`;
 }
 function ensureFrame(frame){if(!frame.dataset.loaded){frame.dataset.loaded='1';frame.src=frame.dataset.src}}
