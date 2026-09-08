@@ -48,6 +48,28 @@ const S={
 };
 function icon(name){return `<svg class="m-ref-icon" viewBox="0 0 24 24" aria-hidden="true">${S[name]}</svg>`}
 function replaceNode(el,name){if(el)el.outerHTML=icon(name)}
+function polishDesktop(doc){
+  const sidebar=doc.querySelector('.sidebar');
+  if(!sidebar||sidebar.querySelector('[data-rwa-extra="apps"]'))return;
+  const before=sidebar.querySelector('[data-action="open-verified-assets"]');
+  if(!before)return;
+  const groups=[
+    ['apps','Apps','PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiLz48cmVjdCB4PSIxNCIgeT0iNCIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiLz48cmVjdCB4PSI0IiB5PSIxNCIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiLz48cmVjdCB4PSIxNCIgeT0iMTQiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIi8+PC9zdmc+'],
+    ['franchise','Franchise','PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTQgMTBoMTZsLTEuNS01aC0xM0w0IDEwWiIvPjxwYXRoIGQ9Ik01IDEwdjEwaDE0VjEwTTkgMjB2LTZoNnY2Ii8+PHBhdGggZD0iTTQgMTBjMCAxLjUgMSAyLjUgMi41IDIuNVM5IDExLjUgOSAxMGMwIDEuNSAxIDIuNSAzIDIuNXMzLTEgMy0yLjVjMCAxLjUgMSAyLjUgMi41IDIuNVMyMCAxMS41IDIwIDEwIi8+PC9zdmc+'],
+    ['ai-models','AI Models','PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTkgNC41QTMgMyAwIDAgMSAxNCA2di4yQTMuMiAzLjIgMCAwIDEgMTggOS4zYTMgMyAwIDAgMS0uOCA1LjhBMy4zIDMuMyAwIDAgMSAxNCAxOS41YTMgMyAwIDAgMS00IDBBMy4zIDMuMyAwIDAgMSA2LjggMTVhMyAzIDAgMCAxLS44LTUuOEEzLjIgMy4yIDAgMCAxIDEwIDZ2LS4yIi8+PHBhdGggZD0iTTEyIDZ2MTJNOSA5LjVoM00xMiAxNC41aDMiLz48L3N2Zz4+']
+  ];
+  for(const [key,label,svg] of groups){
+    const section=doc.createElement('section');
+    section.className='side-group side-group-new';
+    section.dataset.rwaExtra=key;
+    section.innerHTML=`<button aria-expanded="false" class="side-title" data-action="toggle-sidebar-group" type="button"><span><i aria-hidden="true" style='--ico:url("data:image/svg+xml;base64,${svg}")'></i>${label}</span><i class="fa-solid fa-chevron-down"></i></button>`;
+    before.before(section);
+  }
+  const style=doc.createElement('style');
+  style.dataset.previewSidebarExtras='1';
+  style.textContent='.sidebar{overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;padding-bottom:6px!important}.sidebar::-webkit-scrollbar{display:none!important}.sidebar>.side-group,.sidebar>.side-simple,.sidebar>.side-promo{flex-shrink:0!important}.sidebar>.side-group.side-group-new{height:41px!important}.sidebar>.side-group.side-group-new .side-title{height:41px!important}';
+  doc.head.appendChild(style);
+}
 function polishMobile(doc){
   const logo=doc.querySelector('.m-head img');if(logo)logo.src='assets/logo-ref-exact.png';
   replaceNode(doc.querySelector('.m-lang i:first-child'),'globe');
@@ -57,7 +79,7 @@ function polishMobile(doc){
   const nav=doc.querySelectorAll('.bottomnav button>i');
   replaceNode(nav[1],'bag');replaceNode(nav[2],'building');replaceNode(nav[3],'game');replaceNode(nav[4],'user');
 }
-desktopFrame.addEventListener('load',()=>inject(desktopFrame,desktopCss));
+desktopFrame.addEventListener('load',()=>{inject(desktopFrame,desktopCss);const doc=desktopFrame.contentDocument;if(doc)polishDesktop(doc)});
 mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc)});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
 function isMobileViewport(){if(forced==='mobile')return true;if(forced==='desktop')return false;const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1023||(uaMobile&&viewportWidth()<1366)}
