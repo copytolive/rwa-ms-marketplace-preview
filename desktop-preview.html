@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>RWA.ms Responsive Preview</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;min-height:100%;background:#fff}
 body{overflow-x:hidden}
-#desktopWrap{display:block;width:100%;overflow:visible;background:#fff}
+#desktopWrap{display:block;width:100%;overflow:hidden;background:#fff}
 #desktopStage{width:1672px;height:941px;transform-origin:top left;background:#fff}
 #desktopFrame{display:block;border:0;width:1672px;height:941px;background:#fff}
 #mobileWrap{display:none;width:100%;height:100dvh;overflow:hidden;background:#fff}
@@ -22,9 +25,15 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=4&sidebar=20260909f" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=5&sidebar=20260909g" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
+const BUILD='20260909g';
+const initialUrl=new URL(location.href);
+if(!initialUrl.searchParams.has('build')){
+  initialUrl.searchParams.set('build',BUILD);
+  location.replace(initialUrl.toString());
+}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
 const desktopStage=document.getElementById('desktopStage');
@@ -32,15 +41,23 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209f','desktop-pass.css?v=092209f','desktop-final.css?v=092209f'];
+const desktopCss=['desktop-finetune.css?v=092209g','desktop-pass.css?v=092209g','desktop-final.css?v=092209g'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function syncDesktopSidebar(doc){
-  if(!doc||doc.querySelector('style[data-sidebar-sync="1"]'))return;
+  if(!doc)return;
+  const sidebar=doc.querySelector('.sidebar');
+  if(!sidebar)return;
+  const promo=sidebar.querySelector(':scope > .side-promo');
+  const learn=sidebar.querySelector('[data-action="open-learn-and-discover"]');
+  if(promo&&learn&&learn.nextElementSibling!==promo)learn.after(promo);
+  if(doc.querySelector('style[data-sidebar-sync="2"]'))return;
   const style=doc.createElement('style');
-  style.dataset.sidebarSync='1';
+  style.dataset.sidebarSync='2';
   style.textContent=`
-    .sidebar{gap:5px!important;align-content:flex-start!important;justify-content:flex-start!important;padding-bottom:8px!important}
-    .sidebar>.side-promo{margin-top:6px!important;flex:0 0 71px!important}
+    .sidebar{display:flex!important;flex-direction:column!important;gap:5px!important;align-content:flex-start!important;justify-content:flex-start!important;height:auto!important;max-height:858px!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;padding-bottom:8px!important}
+    .sidebar::-webkit-scrollbar{display:none!important}
+    .sidebar>.side-group,.sidebar>.side-simple,.sidebar>.side-promo{flex-shrink:0!important}
+    .sidebar>.side-promo{position:static!important;margin:6px 0 0!important;flex:0 0 71px!important}
     .sidebar>.side-simple{flex:0 0 27px!important}
     .sidebar>.side-group[data-accordion-group]{flex:0 0 auto!important}
     .sidebar>.side-group[data-accordion-group][data-expanded="true"]{margin-bottom:1px!important}
@@ -76,9 +93,9 @@ function isMobileViewport(){if(forced==='mobile')return true;if(forced==='deskto
 function fitDesktop(){
   if(isMobileViewport())return;
   const vw=viewportWidth();
-  const scale=Math.min(1.35,vw/1672);
+  const scale=vw/1672;
   desktopStage.style.transform=`scale(${scale})`;
-  desktopStage.style.marginLeft='0px';
+  desktopStage.style.margin='0';
   desktopWrap.style.width='100%';
   desktopWrap.style.height=`${Math.ceil(941*scale)}px`;
 }
