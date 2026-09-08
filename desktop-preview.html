@@ -22,7 +22,7 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=2&sidebar=20260909c" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=2&sidebar=20260909d" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 const desktopFrame=document.getElementById('desktopFrame');
@@ -32,7 +32,7 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209b','desktop-pass.css?v=092209b','desktop-final.css?v=092209b'];
+const desktopCss=['desktop-finetune.css?v=092209d','desktop-pass.css?v=092209d','desktop-final.css?v=092209d'];
 const mobileCss=[];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 const S={
@@ -51,63 +51,67 @@ function replaceNode(el,name){if(el)el.outerHTML=icon(name)}
 function slug(s){return s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function polishDesktop(doc){
   const sidebar=doc.querySelector('.sidebar');
-  if(!sidebar||sidebar.dataset.canonicalSidebar==='1')return;
-  sidebar.dataset.canonicalSidebar='1';
+  if(!sidebar||sidebar.dataset.canonicalSidebar==='2')return;
+  sidebar.dataset.canonicalSidebar='2';
   const before=sidebar.querySelector('[data-action="open-verified-assets"]');
   if(!before)return;
 
   sidebar.querySelectorAll(':scope > .side-group').forEach(el=>el.remove());
 
   const groups=[
-    {key:'marketplace',label:'Marketplace',icon:'fa-bag-shopping',open:true,items:["Women's Clothing",'Shoes',"Men's Clothing",'Bags & Luggage','Beauty & Health']},
-    {key:'property',label:'Property',icon:'fa-building',open:false,items:['TownHouse','Rumah Sakit','Apartment & Condominium','Villa & Resort','Hotel','Office Tower','Kawasan Industri','Mixed Use Development']},
-    {key:'games',label:'Games',icon:'fa-gamepad',open:false,items:['Game Land','Characters','Weapons','Skins','Loot Boxes','Game Tokens','Esports Assets','Metaverse Assets']},
-    {key:'ai-models',label:'AI Models',icon:'fa-brain',open:false,items:['Trading','Finance','Medical','Legal','Property','Agriculture','Manufacturing','Logistics','Automotive','Energy','Construction','Retail','Education','Insurance','Security','Research']},
-    {key:'franchise',label:'Franchise',icon:'fa-store',open:false,items:['Food & Beverage','Coffee & Cafe','Education','Fitness','Services','Petcare']},
-    {key:'apps',label:'Apps',icon:'fa-table-cells-large',open:false,items:['Business','Finance','Social','Media','Health','Education','Travel','Food']}
+    {key:'marketplace',label:'Marketplace',icon:'fa-bag-shopping',items:["Women's Clothing",'Shoes',"Men's Clothing",'Bags & Luggage','Beauty & Health']},
+    {key:'property',label:'Property',icon:'fa-building',items:['TownHouse','Rumah Sakit','Apartment & Condominium','Villa & Resort','Hotel','Office Tower','Kawasan Industri','Mixed Use Development']},
+    {key:'games',label:'Games',icon:'fa-gamepad',items:['Game Land','Characters','Weapons','Skins','Loot Boxes','Game Tokens','Esports Assets','Metaverse Assets']},
+    {key:'ai-models',label:'AI Models',icon:'fa-brain',items:['Trading','Finance','Medical','Legal','Property','Agriculture','Manufacturing','Logistics','Automotive','Energy','Construction','Retail','Education','Insurance','Security','Research']},
+    {key:'franchise',label:'Franchise',icon:'fa-store',items:['Food & Beverage','Coffee & Cafe','Education','Fitness','Services','Petcare']},
+    {key:'apps',label:'Apps',icon:'fa-table-cells-large',items:['Business','Finance','Social','Media','Health','Education','Travel','Food']}
   ];
 
   function setExpanded(section,expanded){
     section.dataset.expanded=expanded?'true':'false';
     const btn=section.querySelector('.side-title');
-    btn.setAttribute('aria-expanded',expanded?'true':'false');
-    const chev=btn.querySelector('.rwa-chevron');
+    if(btn)btn.setAttribute('aria-expanded',expanded?'true':'false');
+    const chev=section.querySelector('.rwa-chevron');
     if(chev)chev.className=`rwa-chevron fa-solid ${expanded?'fa-chevron-up':'fa-chevron-down'}`;
+  }
+
+  function activateGroup(key){
+    const sections=[...sidebar.querySelectorAll(':scope > .side-group.side-group-canonical')];
+    for(const section of sections)setExpanded(section,section.dataset.rwaGroup===key);
+    sidebar.dataset.activeGroup=key;
   }
 
   for(const group of groups){
     const section=doc.createElement('section');
     section.className='side-group side-group-canonical';
     section.dataset.rwaGroup=group.key;
+    section.dataset.expanded='false';
     const links=group.items.map(item=>`<a data-action="filter-${group.key}-${slug(item)}" href="#"><i class="fa-solid fa-angle-right" aria-hidden="true"></i>${item}</a>`).join('');
-    section.innerHTML=`<button aria-expanded="${group.open?'true':'false'}" class="side-title" type="button"><span><i class="fa-solid ${group.icon}" aria-hidden="true"></i>${group.label}</span><i class="rwa-chevron fa-solid ${group.open?'fa-chevron-up':'fa-chevron-down'}"></i></button>${links}`;
-    setExpanded(section,group.open);
+    section.innerHTML=`<button aria-expanded="false" class="side-title" type="button"><span><i class="fa-solid ${group.icon}" aria-hidden="true"></i>${group.label}</span><i class="rwa-chevron fa-solid fa-chevron-down"></i></button>${links}`;
     const title=section.querySelector('.side-title');
     title.addEventListener('click',e=>{
       e.preventDefault();
+      e.stopPropagation();
       e.stopImmediatePropagation();
-      const shouldOpen=section.dataset.expanded!=='true';
-      if(shouldOpen){
-        sidebar.querySelectorAll(':scope > .side-group.side-group-canonical').forEach(other=>{
-          if(other!==section)setExpanded(other,false);
-        });
-      }
-      setExpanded(section,shouldOpen);
+      activateGroup(group.key);
     },true);
     section.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
     before.before(section);
   }
 
+  activateGroup('marketplace');
+
   const style=doc.createElement('style');
-  style.dataset.previewSidebarCanonical='1';
+  style.dataset.previewSidebarCanonical='2';
   style.textContent=`
     .sidebar{overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;padding-bottom:6px!important;scroll-behavior:smooth!important}
     .sidebar::-webkit-scrollbar{display:none!important}
     .sidebar>.side-group,.sidebar>.side-simple,.sidebar>.side-promo{flex-shrink:0!important}
     .sidebar>.side-group.side-group-canonical{height:auto!important;min-height:41px!important;overflow:hidden!important;border-radius:8px!important}
-    .sidebar>.side-group.side-group-canonical .side-title{height:41px!important;min-height:41px!important}
+    .sidebar>.side-group.side-group-canonical .side-title{height:41px!important;min-height:41px!important;cursor:pointer!important}
     .sidebar>.side-group.side-group-canonical[data-expanded="false"]>a{display:none!important}
     .sidebar>.side-group.side-group-canonical[data-expanded="true"]>a{display:flex!important}
+    .sidebar>.side-group.side-group-canonical[data-expanded="true"]>.side-title{background:#eef9f5!important}
     .sidebar>.side-group.side-group-canonical>a{height:25px!important;min-height:25px!important;padding:0 14px!important;gap:11px!important;font-size:12.5px!important;white-space:nowrap!important}
     .sidebar>.side-group.side-group-canonical .side-title span>i:first-child{font-size:17px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:19px!important;height:19px!important;flex:0 0 19px!important;background:none!important;-webkit-mask:none!important;mask:none!important;color:#071733!important}
     .sidebar>.side-group.side-group-canonical>a i{font-size:9px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:14px!important;height:14px!important;flex:0 0 14px!important;background:none!important;-webkit-mask:none!important;mask:none!important;color:#0a5f56!important}
