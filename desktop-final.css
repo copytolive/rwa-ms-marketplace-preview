@@ -85,3 +85,21 @@
 .mainnav{gap:28px!important}.mainnav a{white-space:nowrap!important}.search input{font-size:12px!important}
 .asset-card>img{object-fit:cover!important;object-position:center!important}.asset-card .discount{background:#087454!important}.asset-card p span{color:#087454!important;font-weight:700!important}
 .hero-copy button{width:252px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:18px!important;padding:0 18px!important;white-space:nowrap!important}.hero-copy button i{margin-left:0!important;flex:0 0 auto!important}
+
+
+/* 20260909s — product-card synchronization with the original RWA product card language */
+.featured{overflow:visible!important}
+.asset-grid{align-items:stretch!important}
+.asset-card{height:225px!important;padding:6px!important;border:1px solid #dfe8e5!important;border-radius:10px!important;background:#fff!important;box-shadow:0 4px 14px rgba(7,22,54,.025)!important}
+.asset-card>img{width:100%!important;height:99px!important;border-radius:7px!important;object-fit:cover!important;object-position:center!important;background:#faf8f4!important}
+.asset-card:before{display:none!important}
+.asset-card .discount{left:6px!important;top:6px!important;width:auto!important;min-width:96px!important;height:auto!important;min-height:34px!important;padding:5px 8px!important;border-radius:7px!important;background:linear-gradient(180deg,#087a5a,#066d50)!important;color:#fff!important;font-size:9.5px!important;line-height:1.04!important;font-weight:800!important;box-shadow:0 2px 8px rgba(0,82,60,.12)!important}
+.asset-card .heart{right:9px!important;top:9px!important;width:28px!important;height:28px!important;border:1px solid #dfe7e4!important;background:rgba(255,255,255,.96)!important;box-shadow:0 2px 8px rgba(7,22,54,.05)!important}
+.asset-card h4{margin:7px 1px 1px!important;font-size:13px!important;line-height:1.05!important;color:#071733!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.asset-card p{margin:0 1px!important;height:12px!important;font-size:9.5px!important;line-height:1.15!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;color:#3571cb!important}
+.asset-card>strong{margin:4px 1px 0!important;font-size:17px!important;line-height:1!important;color:#071733!important}
+.asset-card .holders{height:18px!important;margin:3px 1px 0!important;gap:7px!important}.asset-card .avatar-strip{width:66px!important;height:17px!important;object-fit:cover!important}.asset-card .holders small{font-size:9px!important;color:#5a81b9!important;white-space:nowrap!important}
+.asset-card .sold{height:12px!important;margin:1px 1px 0!important;grid-template-columns:minmax(0,1fr) 58px!important;gap:7px!important}.asset-card .sold>i{height:7px!important}.asset-card .sold span{font-size:8px!important;color:#071733!important}
+.asset-card .detail{height:29px!important;margin-top:3px!important;border:0!important;border-radius:7px!important;background:#edf8f4!important;color:#143a3b!important;display:grid!important;grid-template-columns:30px minmax(0,1fr)!important;align-items:center!important;padding:0!important;font-size:9.5px!important;font-weight:800!important;overflow:hidden!important}
+.asset-card .detail i{height:100%!important;display:grid!important;place-items:center!important;color:#007354!important;font-size:13px!important;border-right:1px solid rgba(0,115,84,.10)!important}.asset-card .detail span{text-align:center!important;padding-right:30px!important}
+.asset-card:hover{border-color:#cfded8!important;box-shadow:0 8px 20px rgba(7,22,54,.055)!important}

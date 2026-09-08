@@ -59,3 +59,14 @@
   .m-tabs button{font-size:11px!important;padding:6px 9px!important}
 }
 @media(prefers-reduced-motion:reduce){.m-assets article,.asset-sheet__panel,.mobile-toast{animation:none!important;transition:none!important}}
+
+
+/* 20260909s — product cards mirror the desktop/original product card pattern */
+.m-assets article{position:relative!important;padding:6px!important;border:1px solid #dfe8e5!important;border-radius:18px!important;background:#fff!important;overflow:hidden!important}
+.m-assets article>img{height:132px!important;border-radius:12px!important;object-fit:cover!important;background:#faf8f4!important}
+.m-product-badge{position:absolute;z-index:4;left:10px;top:10px;min-width:104px;padding:6px 9px;border-radius:10px;background:linear-gradient(180deg,#087a5a,#066d50);color:#fff;font-size:10px;line-height:1.05;font-weight:800;box-shadow:0 3px 10px rgba(0,82,60,.13)}
+.m-assets .heart{opacity:1!important;right:10px!important;top:10px!important;background:rgba(255,255,255,.97)!important}
+.m-assets h4{margin:7px 2px 1px!important;font-size:14px!important;line-height:1.08!important}.m-assets p{margin:0 2px!important;color:#3571cb!important;font-size:10px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-assets p span{color:#087454!important;font-weight:700!important}
+.m-assets article>strong{margin:4px 2px 0!important;font-size:17px!important;line-height:1!important}.m-holder-row{display:flex!important;align-items:center!important;gap:8px!important;margin:4px 2px 0!important}.m-avatar-strip{width:62px!important;height:16px!important;object-fit:cover!important}.m-holder-row small{font-size:9px!important;color:#5a81b9!important}
+.m-sold{margin:4px 2px 0!important}.m-product-detail{width:100%;height:34px;margin-top:7px;border:0;border-radius:10px;background:#edf8f4;color:#143a3b;display:grid;grid-template-columns:36px 1fr;align-items:center;padding:0;font-size:11px;font-weight:800}.m-product-detail i{height:100%;display:grid;place-items:center;color:#007354;border-right:1px solid rgba(0,115,84,.10)}.m-product-detail span{padding-right:36px;text-align:center}
+@media(max-width:600px){.m-assets article{height:318px!important}.m-assets article>img{height:150px!important}.m-product-badge{font-size:9.5px!important}.m-product-detail{height:36px!important}}

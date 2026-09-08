@@ -62,3 +62,13 @@ body{background:var(--paper)!important;overscroll-behavior-y:none}
 .m-verticals article{background:#10251f!important}.m-verticals img{object-position:62% 50%!important}.m-verticals button{white-space:nowrap!important;max-width:100%!important}
 .m-assets article p{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}.m-assets article img{object-fit:cover!important}
 @media(max-width:600px){.m-tabs{max-width:56vw!important}.m-verticals article{flex-basis:82vw!important}.m-verticals h3{font-size:28px!important}.m-verticals p{max-width:260px!important}.m-verticals button{font-size:11.5px!important;padding:9px 13px!important}}
+
+/* 20260909s product-card final override: protect product media vs. holder avatars */
+.m-assets article{height:318px!important;padding:6px!important;display:block!important}
+.m-assets article>img{display:block!important;width:100%!important;height:150px!important;min-height:150px!important;max-height:150px!important;object-fit:cover!important;border-radius:12px!important}
+.m-assets article .m-holder-row{display:flex!important;align-items:center!important;gap:8px!important;height:18px!important;margin:4px 2px 0!important;overflow:hidden!important}
+.m-assets article .m-holder-row .m-avatar-strip{display:block!important;width:62px!important;height:16px!important;min-width:62px!important;min-height:16px!important;max-width:62px!important;max-height:16px!important;object-fit:cover!important;border-radius:0!important}
+.m-assets article .m-holder-row small{display:block!important;font-size:9px!important;color:#5a81b9!important;white-space:nowrap!important}
+.m-assets article .m-sold{height:13px!important;margin:4px 2px 0!important;display:grid!important;grid-template-columns:minmax(0,1fr) 62px!important;gap:7px!important;align-items:center!important}
+.m-assets article .m-product-detail{display:grid!important;width:100%!important;height:36px!important;margin:7px 0 0!important;grid-template-columns:38px minmax(0,1fr)!important;align-items:center!important;border:0!important;border-radius:10px!important;background:#edf8f4!important;color:#143a3b!important;padding:0!important;font-size:11px!important;font-weight:800!important}
+.m-assets article .m-product-detail i{height:36px!important;display:grid!important;place-items:center!important;color:#007354!important;border-right:1px solid rgba(0,115,84,.10)!important}.m-assets article .m-product-detail span{text-align:center!important;padding-right:38px!important}

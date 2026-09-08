@@ -15,8 +15,12 @@ const seeds={
  franchise:[['BrewLab Cafe','BrewLab Group','$18,000','286 holders',64],['GreenBowl Kitchen','GreenBowl Foods','$22,500','314 holders',59],['LearnHub Center','LearnHub','$16,000','241 holders',68],['PulseFit Studio','PulseFit','$28,000','375 holders',53],['HomeCare Services','CareWorks','$14,500','208 holders',76],['PawHouse Petcare','PawHouse','$19,500','342 holders',61]],
  apps:[['LedgerFlow','LedgerFlow Labs','$780','2,208 holders',68],['SocialLoop','Loop Networks','$520','3,142 holders',54],['MediaForge','Forge Studio','$690','1,804 holders',63],['HealthTrack','HealthTrack Labs','$840','2,614 holders',72],['EduPath','EduPath Systems','$460','1,996 holders',57],['TripMate','TripMate Digital','$610','2,402 holders',66]]
 };
+const imageOverrides={
+ 'marketplace-1':'assets/media1_clean.png','marketplace-2':'assets/media2_clean.png','marketplace-3':'assets/media3_clean.png','marketplace-4':'assets/media4_clean.png',
+ 'property-1':'assets/media5_clean.png','games-1':'assets/media6_clean.png'
+};
 const CATALOG=[];
-for(const cat of CATEGORIES){(seeds[cat.key]||[]).forEach((x,i)=>CATALOG.push({key:`${cat.key}-${i+1}`,category:cat.key,label:cat.label,name:x[0],brand:x[1],price:x[2],holders:x[3],sold:x[4],image:`assets/catalog-${cat.key}-${i+1}.webp`}));}
+for(const cat of CATEGORIES){(seeds[cat.key]||[]).forEach((x,i)=>{const key=`${cat.key}-${i+1}`;CATALOG.push({key,category:cat.key,label:cat.label,name:x[0],brand:x[1],price:x[2],holders:x[3],sold:x[4],image:imageOverrides[key]||`assets/catalog-${cat.key}-${i+1}.webp`});});}
 window.RWA_CATEGORIES=CATEGORIES;
 window.RWA_CATALOG=CATALOG;
 })();
