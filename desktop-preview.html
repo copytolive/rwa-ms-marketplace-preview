@@ -25,10 +25,10 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=11&drawer=20260909m" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=12&drawer=20260909n" title="RWA.ms desktop real-code preview"></iframe></div></div>
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
-const BUILD='20260909m';
+const BUILD='20260909n';
 try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);history.replaceState(null,'',u)}}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
@@ -37,7 +37,7 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209m','desktop-pass.css?v=092209m','desktop-final.css?v=092209m'];
+const desktopCss=['desktop-finetune.css?v=092209n','desktop-pass.css?v=092209n','desktop-final.css?v=092209n'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function installDesktopDrawer(doc){
   if(!doc||doc.documentElement.dataset.rwaDrawer==='1')return;
@@ -68,8 +68,15 @@ function installDesktopDrawer(doc){
   const head=doc.createElement('div');
   head.className='rwa-drawer-head';
   const logoSrc=brand.querySelector('img')?.getAttribute('src')||'assets/logo-ref-exact.png';
-  head.innerHTML=`<div class="rwa-drawer-brand"><img src="${logoSrc}" alt="RWA.ms"><small>Browse all categories</small></div><button class="rwa-drawer-close" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>`;
+  head.innerHTML=`<div class="rwa-drawer-brand"><img src="${logoSrc}" alt="RWA.ms"><small>Browse all categories</small></div>`;
   sidebar.insertBefore(head,sidebar.firstChild);
+
+  const closeBtn=doc.createElement('button');
+  closeBtn.type='button';
+  closeBtn.className='rwa-drawer-close';
+  closeBtn.setAttribute('aria-label','Close navigation');
+  closeBtn.innerHTML='<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+  doc.body.appendChild(closeBtn);
 
   const promo=sidebar.querySelector(':scope > .side-promo');
   const learn=sidebar.querySelector('[data-action="open-learn-and-discover"]');
@@ -96,16 +103,16 @@ function installDesktopDrawer(doc){
     .topbar>.brand img{width:145px!important}
     .rwa-menu-toggle{position:relative!important;z-index:2!important;height:42px!important;min-width:82px!important;padding:0 12px!important;border:1px solid #dce3e8!important;border-radius:9px!important;background:#fff!important;color:#071733!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;font-size:12px!important;font-weight:700!important;cursor:pointer!important;flex:0 0 auto!important}
     .rwa-menu-toggle i{font-size:17px!important}
-    .rwa-drawer-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;border:0!important;background:rgba(5,18,29,.46)!important;opacity:0!important;pointer-events:none!important;z-index:9998!important;transition:opacity .22s ease!important;cursor:pointer!important}
+    .rwa-drawer-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;border:0!important;background:rgba(0,0,0,.62)!important;opacity:0!important;pointer-events:none!important;z-index:9998!important;transition:opacity .22s ease!important;cursor:pointer!important}
     .rwa-drawer-overlay[data-open="true"]{opacity:1!important;pointer-events:auto!important}
-    .sidebar{position:fixed!important;left:0!important;top:0!important;bottom:auto!important;width:326px!important;height:auto!important;min-height:0!important;max-height:100vh!important;margin:0!important;padding:0 12px 14px!important;display:flex!important;flex-direction:column!important;gap:7px!important;background:#f8fbfa!important;border-right:1px solid #e4ece9!important;border-bottom:1px solid #e4ece9!important;border-radius:0 0 14px 0!important;box-shadow:0 18px 48px rgba(4,22,34,.22)!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:none!important;z-index:10000!important;isolation:isolate!important;transform:translateX(-102%)!important;transition:transform .24s cubic-bezier(.2,.8,.2,1)!important}
-    .sidebar::-webkit-scrollbar{display:none!important}
+    .sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:326px!important;height:100vh!important;min-height:100vh!important;max-height:100vh!important;margin:0!important;padding:0 12px 18px!important;display:flex!important;flex-direction:column!important;gap:7px!important;background:#fff!important;border:0!important;border-right:1px solid #d9e1e5!important;border-radius:0!important;box-shadow:8px 0 28px rgba(0,0,0,.22)!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;scrollbar-color:#b6c0c5 transparent!important;z-index:10000!important;isolation:isolate!important;transform:translateX(-102%)!important;transition:transform .24s cubic-bezier(.2,.8,.2,1)!important}
+    .sidebar::-webkit-scrollbar{width:8px!important}.sidebar::-webkit-scrollbar-track{background:transparent!important}.sidebar::-webkit-scrollbar-thumb{background:#b6c0c5!important;border-radius:10px!important}
     .sidebar[data-drawer-open="true"]{transform:translateX(0)!important}
-    .rwa-drawer-head{position:sticky!important;top:0!important;z-index:3!important;min-height:82px!important;margin:0 -12px 5px!important;padding:12px 14px!important;background:#fff!important;border-bottom:1px solid #e7eeec!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex:0 0 auto!important}
+    .rwa-drawer-head{position:sticky!important;top:0!important;z-index:3!important;min-height:82px!important;margin:0 -12px 5px!important;padding:12px 16px!important;background:#fff!important;border-bottom:1px solid #dfe5e8!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;flex:0 0 auto!important}
     .rwa-drawer-brand{display:flex!important;align-items:flex-start!important;flex-direction:column!important;gap:2px!important}
     .rwa-drawer-brand img{display:block!important;width:154px!important;height:auto!important}
     .rwa-drawer-brand small{font-size:10px!important;color:#607187!important;margin-left:2px!important}
-    .rwa-drawer-close{width:38px!important;height:38px!important;border:0!important;border-radius:8px!important;background:#eef4f2!important;color:#071733!important;display:grid!important;place-items:center!important;cursor:pointer!important;flex:0 0 38px!important}
+    .rwa-drawer-close{position:fixed!important;left:338px!important;top:14px!important;width:42px!important;height:42px!important;border:0!important;border-radius:4px!important;background:transparent!important;color:#fff!important;display:grid!important;place-items:center!important;cursor:pointer!important;z-index:10001!important;opacity:0!important;pointer-events:none!important;transform:scale(.92)!important;transition:opacity .18s ease,transform .18s ease!important} .rwa-drawer-close[data-open="true"]{opacity:1!important;pointer-events:auto!important;transform:scale(1)!important} .rwa-drawer-close:hover{background:rgba(255,255,255,.12)!important}
     .rwa-drawer-close i{font-size:18px!important}
     .sidebar>.side-group,.sidebar>.side-simple,.sidebar>.side-promo{flex-shrink:0!important}
     .sidebar>.side-group[data-accordion-group]{height:auto!important;min-height:46px!important;border-radius:10px!important;background:#fff!important;border:1px solid #e6eeeb!important;overflow:hidden!important}
@@ -125,10 +132,10 @@ function installDesktopDrawer(doc){
   `;
   doc.head.appendChild(style);
 
-  const closeBtn=head.querySelector('.rwa-drawer-close');
   function setOpen(open){
     sidebar.dataset.drawerOpen=open?'true':'false';
     overlay.dataset.open=open?'true':'false';
+    closeBtn.dataset.open=open?'true':'false';
     menu.setAttribute('aria-expanded',open?'true':'false');
     doc.body.classList.toggle('rwa-drawer-open',open);
   }
