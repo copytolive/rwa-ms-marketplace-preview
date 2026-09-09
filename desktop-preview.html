@@ -156,7 +156,6 @@ function icon(name){return `<svg class="m-ref-icon" viewBox="0 0 24 24" aria-hid
 function replaceNode(el,name){if(el)el.outerHTML=icon(name)}
 function polishMobile(doc){
   const logo=doc.querySelector('.m-head img');if(logo)logo.src='assets/logo-ref-exact.png';
-  replaceNode(doc.querySelector('.m-lang i:first-child'),'globe');
   ['globe','bars','users','shield'].forEach((n,i)=>replaceNode(doc.querySelectorAll('.m-usp>div>i')[i],n));
   ['bag','building','game'].forEach((n,i)=>replaceNode(doc.querySelectorAll('.m-verticals article>div>i')[i],n));
   ['trend','bars','users'].forEach((n,i)=>replaceNode(doc.querySelectorAll('.m-stats>div>i')[i],n));
