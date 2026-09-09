@@ -1,12 +1,18 @@
-/* 20260909x — full-scene editorial fashion hero, reference-matched and cache-busted. */
-.hero-fashion{background:#f3ece4!important;overflow:hidden!important}
-.hero-fashion .hero-copy{left:30px!important;top:27px!important;width:430px!important;z-index:7!important}
-.hero-fashion .hero-copy p{width:405px!important;max-width:405px!important;font-size:14px!important;line-height:1.42!important}
-.hero-fashion h1{font-size:50px!important;line-height:.98!important}
-.hero-fashion .hero-actions{top:205px!important;z-index:8!important}
-.hero-fashion .fashion-visual{position:absolute!important;left:320px!important;top:0!important;width:635px!important;height:281px!important;overflow:hidden!important;background:#eee6dd url("assets/hero-fashion-scene.jpg?v=20260909x") center center/cover no-repeat!important}
+/* 20260909y — premium editorial hero: crisp photography, no collage, no pixelation. */
+.hero-fashion{background:#f3ece4!important;overflow:hidden!important;isolation:isolate!important}
+.hero-fashion .hero-copy{left:30px!important;top:24px!important;width:455px!important;z-index:7!important}
+.hero-fashion .hero-copy .eyebrow{font-size:11px!important;letter-spacing:.22em!important;margin-bottom:10px!important;color:#1b314f!important}
+.hero-fashion h1{font-size:48px!important;line-height:.97!important;letter-spacing:-1.55px!important;margin:0 0 12px!important;color:#06172f!important}
+.hero-fashion .hero-copy p{width:405px!important;max-width:405px!important;font-size:13.5px!important;line-height:1.42!important;color:#24364f!important;margin:0!important}
+.hero-fashion .hero-actions{top:205px!important;left:30px!important;z-index:9!important;gap:10px!important}
+.hero-fashion .hero-primary,.hero-fashion .hero-secondary{height:42px!important;border-radius:9px!important;font-size:12.5px!important;font-weight:800!important}
+.hero-fashion .hero-primary{padding:0 19px!important;min-width:194px!important;box-shadow:0 7px 18px rgba(0,105,78,.12)!important}
+.hero-fashion .hero-secondary{padding:0 17px!important;min-width:166px!important;background:rgba(255,255,255,.94)!important;border:1px solid #dce4e2!important;color:#102844!important}
+.hero-fashion .fashion-visual{position:absolute!important;left:375px!important;top:0!important;width:423px!important;height:281px!important;overflow:hidden!important;background:#eee6dd url("assets/hero-original-clean.png?v=20260909y") 58% center/cover no-repeat!important;z-index:2!important}
 .hero-fashion .fashion-visual>img{display:none!important}
-.hero-fashion .fashion-visual:before{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(90deg,#f3ece4 0%,rgba(243,236,228,.96) 10%,rgba(243,236,228,.72) 24%,rgba(243,236,228,.28) 39%,rgba(243,236,228,.04) 54%,transparent 66%)!important;pointer-events:none!important}
-.hero-fashion .fashion-visual:after{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(180deg,rgba(7,22,54,0),rgba(7,22,54,.02))!important;pointer-events:none!important}
-.hero-fashion .hero-right{width:154px!important;z-index:8!important;background:rgba(239,229,219,.80)!important;backdrop-filter:blur(9px)!important;border-left:1px solid rgba(7,22,54,.05)!important}
+.hero-fashion .fashion-visual:before{content:""!important;position:absolute!important;z-index:3!important;inset:0!important;background:linear-gradient(90deg,#f3ece4 0%,rgba(243,236,228,.97) 9%,rgba(243,236,228,.84) 19%,rgba(243,236,228,.52) 31%,rgba(243,236,228,.18) 43%,rgba(243,236,228,0) 57%)!important;pointer-events:none!important}
+.hero-fashion .fashion-visual:after{content:""!important;position:absolute!important;z-index:3!important;inset:0!important;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(7,22,54,.035))!important;pointer-events:none!important}
+.hero-fashion .hero-right{width:154px!important;z-index:8!important;background:linear-gradient(180deg,rgba(239,229,219,.94),rgba(235,224,213,.90))!important;backdrop-filter:blur(8px)!important;border-left:1px solid rgba(7,22,54,.055)!important}
+.hero-fashion .hero-right span{letter-spacing:.12em!important}
+.hero-fashion .hero-right b{letter-spacing:-.03em!important}
 .fashion-caption{display:none!important}
