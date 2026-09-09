@@ -1,8 +1,8 @@
 {
   "overall": {
-    "mae": 49.231,
-    "within10_percent": 41.81,
-    "exact_percent": 1.89
+    "mae": 48.986,
+    "within10_percent": 39.54,
+    "exact_percent": 1.88
   },
   "zones": {
     "header": {
@@ -16,9 +16,9 @@
       "exact_percent": 0.41
     },
     "hero": {
-      "mae": 62.671,
-      "within10_percent": 31.0,
-      "exact_percent": 0.84
+      "mae": 61.406,
+      "within10_percent": 19.24,
+      "exact_percent": 0.8
     },
     "chart": {
       "mae": 19.695,
