@@ -85,3 +85,20 @@ body{touch-action:pan-y pinch-zoom!important}
 .mobile-toast{bottom:calc(82px + env(safe-area-inset-bottom))!important}
 .scroll-top{bottom:calc(84px + env(safe-area-inset-bottom))!important}
 @media(min-width:601px) and (max-width:1023px){.bottomnav,.bottomnav.nav-hidden{left:0!important;right:0!important;width:100%!important;transform:none!important}}
+
+
+/* 20260910 — Featured Assets stack vertically on mobile, desktop unchanged */
+@media (max-width:1199px){
+  .m-featured{height:auto!important;min-height:0!important;overflow:visible!important;padding-bottom:18px!important}
+  .m-featured-head{align-items:flex-start!important;flex-wrap:wrap!important;row-gap:8px!important}
+  .m-tabs{width:100%!important;max-width:100%!important;overflow-x:auto!important;padding-bottom:4px!important}
+  .m-assets{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important;overflow:visible!important;scroll-snap-type:none!important;padding:8px 2px 14px!important}
+  .m-assets article{width:100%!important;min-width:0!important;max-width:none!important;flex:none!important;height:auto!important;min-height:318px!important;scroll-snap-align:none!important}
+  .m-assets article[hidden]{display:none!important}
+  .m-assets article>img{height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:16/9!important;object-fit:cover!important}
+}
+@media (max-width:600px){
+  .m-featured{margin-left:14px!important;margin-right:14px!important}
+  .m-assets article{min-height:0!important}
+  .m-assets article>img{aspect-ratio:16/9!important}
+}
