@@ -72,3 +72,16 @@ body{background:var(--paper)!important;overscroll-behavior-y:none}
 .m-assets article .m-sold{height:13px!important;margin:4px 2px 0!important;display:grid!important;grid-template-columns:minmax(0,1fr) 62px!important;gap:7px!important;align-items:center!important}
 .m-assets article .m-product-detail{display:grid!important;width:100%!important;height:36px!important;margin:7px 0 0!important;grid-template-columns:38px minmax(0,1fr)!important;align-items:center!important;border:0!important;border-radius:10px!important;background:#edf8f4!important;color:#143a3b!important;padding:0!important;font-size:11px!important;font-weight:800!important}
 .m-assets article .m-product-detail i{height:36px!important;display:grid!important;place-items:center!important;color:#007354!important;border-right:1px solid rgba(0,115,84,.10)!important}.m-assets article .m-product-detail span{text-align:center!important;padding-right:38px!important}
+
+
+/* 20260910 — mobile scroll + docked bottom navigation final */
+html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:auto!important;-webkit-overflow-scrolling:touch!important}
+body{touch-action:pan-y pinch-zoom!important}
+.mobile-page{height:auto!important;min-height:100dvh!important;overflow:visible!important;padding-bottom:calc(72px + env(safe-area-inset-bottom))!important}
+.bottomnav,.bottomnav.nav-hidden{position:fixed!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;max-width:none!important;height:calc(68px + env(safe-area-inset-bottom))!important;transform:none!important;margin:0!important;border:0!important;border-top:1px solid #dfe7e4!important;border-radius:0!important;background:rgba(255,255,255,.98)!important;box-shadow:0 -8px 24px rgba(7,22,54,.08)!important;padding:0 0 env(safe-area-inset-bottom)!important;opacity:1!important;visibility:visible!important;overflow:hidden!important;z-index:1000!important;backdrop-filter:blur(18px) saturate(1.2)!important}
+.bottomnav button{min-height:68px!important;background:transparent!important;border:0!important;border-right:1px solid #edf1ef!important}
+.bottomnav button:last-child{border-right:0!important}
+.selection-bar{bottom:calc(68px + env(safe-area-inset-bottom))!important}
+.mobile-toast{bottom:calc(82px + env(safe-area-inset-bottom))!important}
+.scroll-top{bottom:calc(84px + env(safe-area-inset-bottom))!important}
+@media(min-width:601px) and (max-width:1023px){.bottomnav,.bottomnav.nav-hidden{left:0!important;right:0!important;width:100%!important;transform:none!important}}
