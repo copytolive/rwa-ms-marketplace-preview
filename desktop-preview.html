@@ -150,7 +150,9 @@ const S={
  building:'<path d="M4 21V8l8-4v17M12 21V6l8 3v12M2 21h20"/><path d="M7 11h2M7 14h2M7 17h2M15 11h2M15 14h2M15 17h2"/>',
  game:'<path d="M7 8h10a5 5 0 0 1 4.7 6.8l-1.1 2.8a2.6 2.6 0 0 1-4.2 1L14.8 17H9.2l-1.6 1.6a2.6 2.6 0 0 1-4.2-1l-1.1-2.8A5 5 0 0 1 7 8Z"/><path d="M7 11v4M5 13h4M16.5 12h.01M19 14h.01"/>',
  trend:'<path d="m3 17 6-6 4 4 8-9"/><path d="M15 6h6v6"/>',
- user:'<circle cx="12" cy="7" r="4"/><path d="M4 21c.7-5 3.5-7.5 8-7.5S19.3 16 20 21"/>'
+ user:'<circle cx="12" cy="7" r="4"/><path d="M4 21c.7-5 3.5-7.5 8-7.5S19.3 16 20 21"/>',
+ home:'<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V21h13V10.5M9.5 21v-6h5v6"/>',
+ star:'<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>'
 };
 function icon(name){return `<svg class="m-ref-icon" viewBox="0 0 24 24" aria-hidden="true">${S[name]}</svg>`}
 function replaceNode(el,name){if(el)el.outerHTML=icon(name)}
@@ -160,7 +162,7 @@ function polishMobile(doc){
   ['bag','building','game'].forEach((n,i)=>replaceNode(doc.querySelectorAll('.m-verticals article>div>i')[i],n));
   ['trend','bars','users'].forEach((n,i)=>replaceNode(doc.querySelectorAll('.m-stats>div>i')[i],n));
   const nav=doc.querySelectorAll('.bottomnav button>i');
-  replaceNode(nav[1],'bag');replaceNode(nav[2],'building');replaceNode(nav[3],'game');replaceNode(nav[4],'user');
+  replaceNode(nav[0],'home');replaceNode(nav[1],'bag');replaceNode(nav[2],'trend');replaceNode(nav[3],'star');replaceNode(nav[4],'user');
 }
 desktopFrame.addEventListener('load',()=>{installDesktopDrawer(desktopFrame.contentDocument);requestAnimationFrame(()=>{desktopFrame.style.visibility='visible';desktopFrame.dataset.firstPaintReady='1'})});
 mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc);requestAnimationFrame(()=>{mobileFrame.style.visibility='visible';mobileFrame.dataset.firstPaintReady='1'})});
