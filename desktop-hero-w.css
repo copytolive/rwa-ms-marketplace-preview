@@ -35,3 +35,16 @@
 .asset-card .holders{position:static!important;top:auto!important;margin:2px 1px 0!important}
 .asset-card .sold{position:static!important;top:auto!important;margin:1px 1px 0!important}
 .asset-card .detail{position:static!important;top:auto!important;margin-top:3px!important}
+
+/* 20260909aa — Featured Assets deterministic absolute layout.
+   desktop-clean.css makes the product image absolute, so all product metadata
+   must share the same positioning model. This removes the z build's mixed
+   static/absolute flow that pushed text behind the artwork. */
+.asset-card{position:relative!important;height:225px!important;overflow:hidden!important;padding:0!important}
+.asset-card>img{position:absolute!important;left:6px!important;right:6px!important;top:6px!important;width:calc(100% - 12px)!important;height:99px!important;object-fit:cover!important;border-radius:7px!important}
+.asset-card h4{position:absolute!important;left:10px!important;right:10px!important;top:110px!important;margin:0!important;height:16px!important;min-height:16px!important;font-size:13px!important;line-height:16px!important;font-weight:700!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.asset-card p{position:absolute!important;left:10px!important;right:10px!important;top:126px!important;margin:0!important;height:12px!important;min-height:12px!important;font-size:9.5px!important;line-height:12px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.asset-card>strong{position:absolute!important;left:10px!important;top:140px!important;margin:0!important;height:18px!important;font-size:17px!important;line-height:18px!important}
+.asset-card .holders{position:absolute!important;left:10px!important;right:10px!important;top:160px!important;margin:0!important;height:17px!important;display:flex!important;align-items:center!important;gap:7px!important}
+.asset-card .sold{position:absolute!important;left:10px!important;right:10px!important;top:180px!important;margin:0!important;width:auto!important;height:10px!important;display:grid!important;grid-template-columns:minmax(0,1fr) 56px!important;gap:7px!important;align-items:center!important}
+.asset-card .detail{position:absolute!important;left:6px!important;right:6px!important;top:194px!important;margin:0!important;width:calc(100% - 12px)!important;height:29px!important}
