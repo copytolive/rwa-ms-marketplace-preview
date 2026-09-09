@@ -16,3 +16,22 @@
 .hero-fashion .hero-right span{letter-spacing:.12em!important}
 .hero-fashion .hero-right b{letter-spacing:-.03em!important}
 .fashion-caption{display:none!important}
+/* 20260909z — featured product typography collision fix. No image changes. */
+.asset-card h4{
+  position:static!important;top:auto!important;
+  margin:7px 1px 2px!important;
+  min-height:16px!important;height:16px!important;
+  font-size:13px!important;line-height:16px!important;font-weight:700!important;
+  white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+.asset-card p{
+  position:static!important;top:auto!important;
+  margin:0 1px 3px!important;
+  min-height:12px!important;height:12px!important;
+  font-size:9.5px!important;line-height:12px!important;
+  white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+.asset-card>strong{position:static!important;top:auto!important;margin:2px 1px 0!important;line-height:17px!important}
+.asset-card .holders{position:static!important;top:auto!important;margin:2px 1px 0!important}
+.asset-card .sold{position:static!important;top:auto!important;margin:1px 1px 0!important}
+.asset-card .detail{position:static!important;top:auto!important;margin-top:3px!important}
