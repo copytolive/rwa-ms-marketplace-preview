@@ -1,0 +1,56 @@
+name: One-time hero x patch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/hero-x-patch.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply final full-scene fashion hero
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          preview = Path('desktop-preview.html')
+          s = preview.read_text()
+          s = s.replace('20260909w', '20260909x')
+          s = s.replace('092209w', '092209x')
+          preview.write_text(s)
+
+          css = '''/* 20260909x — full-scene editorial fashion hero, reference-matched and cache-busted. */
+          .hero-fashion{background:#f3ece4!important;overflow:hidden!important}
+          .hero-fashion .hero-copy{left:30px!important;top:27px!important;width:430px!important;z-index:7!important}
+          .hero-fashion .hero-copy p{width:405px!important;max-width:405px!important;font-size:14px!important;line-height:1.42!important}
+          .hero-fashion h1{font-size:50px!important;line-height:.98!important}
+          .hero-fashion .hero-actions{top:205px!important;z-index:8!important}
+          .hero-fashion .fashion-visual{position:absolute!important;left:320px!important;top:0!important;width:635px!important;height:281px!important;overflow:hidden!important;background:#eee6dd url("assets/hero-fashion-scene.jpg?v=20260909x") center center/cover no-repeat!important}
+          .hero-fashion .fashion-visual>img{display:none!important}
+          .hero-fashion .fashion-visual:before{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(90deg,#f3ece4 0%,rgba(243,236,228,.96) 10%,rgba(243,236,228,.72) 24%,rgba(243,236,228,.28) 39%,rgba(243,236,228,.04) 54%,transparent 66%)!important;pointer-events:none!important}
+          .hero-fashion .fashion-visual:after{content:""!important;position:absolute!important;z-index:2!important;inset:0!important;background:linear-gradient(180deg,rgba(7,22,54,0),rgba(7,22,54,.02))!important;pointer-events:none!important}
+          .hero-fashion .hero-right{width:154px!important;z-index:8!important;background:rgba(239,229,219,.80)!important;backdrop-filter:blur(9px)!important;border-left:1px solid rgba(7,22,54,.05)!important}
+          .fashion-caption{display:none!important}
+          '''
+          Path('desktop-hero-w.css').write_text('\n'.join(line.strip() for line in css.splitlines())+'\n')
+          PY
+      - name: Commit final hero patch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add desktop-preview.html desktop-hero-w.css
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m 'Finalize full-scene fashion hero build x'
+            git push
+          fi
