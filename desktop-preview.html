@@ -25,20 +25,14 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=21&drawer=20260909aa&firstpaint=1" title="RWA.ms desktop real-code preview"></iframe></div></div>
-<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909aa&firstpaint=1" title="RWA.ms mobile real-code preview"></iframe></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
-const BUILD='20260909aa';
-try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);history.replaceState(null,'',u.toString())}}catch(_e){}
+try{if(location.search||location.hash)history.replaceState(null,'',location.pathname)}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
 const desktopStage=document.getElementById('desktopStage');
 const desktopWrap=document.getElementById('desktopWrap');
-const qs=new URLSearchParams(location.search);
-const forced=qs.get('view');
-if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209aa','desktop-pass.css?v=092209aa','desktop-final.css?v=092209aa','desktop-hero-w.css?v=092209aa'];
-function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function installDesktopDrawer(doc){
   if(!doc||doc.documentElement.dataset.rwaDrawer==='1')return;
   const sidebar=doc.querySelector('.sidebar');
@@ -172,7 +166,7 @@ function polishMobile(doc){
 desktopFrame.addEventListener('load',()=>{installDesktopDrawer(desktopFrame.contentDocument);requestAnimationFrame(()=>{desktopFrame.style.visibility='visible';desktopFrame.dataset.firstPaintReady='1'})});
 mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc);requestAnimationFrame(()=>{mobileFrame.style.visibility='visible';mobileFrame.dataset.firstPaintReady='1'})});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
-function isMobileViewport(){if(forced==='mobile')return true;if(forced==='desktop')return false;const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1199||(uaMobile&&viewportWidth()<1366)}
+function isMobileViewport(){const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1199||(uaMobile&&viewportWidth()<1366)}
 function fitDesktop(){
   if(isMobileViewport())return;
   const vw=Math.max(1024,viewportWidth());
