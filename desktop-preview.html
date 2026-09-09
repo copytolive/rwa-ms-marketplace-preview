@@ -15,7 +15,7 @@ body{overflow-x:hidden}
 #desktopStage{position:absolute;left:0;top:0;width:1672px;height:941px;margin:0!important;transform-origin:top left;background:#fff}
 #desktopFrame{display:block;border:0;width:1672px;height:941px;background:#fff;visibility:hidden}
 #mobileWrap{display:none;width:100%;height:100dvh;overflow:hidden;background:#fff}
-#mobileFrame{display:block;border:0;width:100%;height:100dvh;background:#fff;visibility:hidden}
+#mobileFrame{display:block;border:0;width:100%;height:100dvh;background:#fff;visibility:hidden;overflow:auto;-webkit-overflow-scrolling:touch}
 @media (max-width:1199px){#desktopWrap{display:none!important}#mobileWrap{display:block!important}body{height:100dvh;overflow:hidden}}
 @media (min-width:1200px){#desktopWrap{display:block!important}#mobileWrap{display:none!important}}
 body[data-force="mobile"] #desktopWrap{display:none!important}
@@ -26,7 +26,7 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </head>
 <body>
 <div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html" title="RWA.ms desktop real-code preview"></iframe></div></div>
-<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html" title="RWA.ms mobile real-code preview"></iframe></div>
+<div id="mobileWrap"><iframe id="mobileFrame" scrolling="yes" data-src="mobile-code.html" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 try{if(location.search||location.hash)history.replaceState(null,'',location.pathname)}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
