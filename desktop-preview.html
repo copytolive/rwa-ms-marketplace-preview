@@ -29,7 +29,7 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 <div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909aa&firstpaint=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 const BUILD='20260909aa';
-try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);location.replace(u.toString())}}catch(_e){}
+try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);history.replaceState(null,'',u.toString())}}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
 const desktopStage=document.getElementById('desktopStage');
