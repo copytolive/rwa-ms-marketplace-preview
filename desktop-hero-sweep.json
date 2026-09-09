@@ -1,79 +1,79 @@
 {
   "best": [
     {
-      "file": "hero_000_Georgia_0.9_-7.png",
-      "mae": 53.5719,
-      "within10_percent": 40.7
-    },
-    {
-      "file": "hero_032_Liberation-Serif_0.9_-7.png",
-      "mae": 53.5719,
-      "within10_percent": 40.7
-    },
-    {
-      "file": "hero_016_Times-New-Roman_0.9_-7.png",
-      "mae": 53.5719,
-      "within10_percent": 40.7
-    },
-    {
-      "file": "hero_001_Georgia_0.9_-6.png",
-      "mae": 53.5901,
-      "within10_percent": 40.71
-    },
-    {
-      "file": "hero_033_Liberation-Serif_0.9_-6.png",
-      "mae": 53.5901,
-      "within10_percent": 40.71
-    },
-    {
-      "file": "hero_017_Times-New-Roman_0.9_-6.png",
-      "mae": 53.5901,
-      "within10_percent": 40.71
-    },
-    {
-      "file": "hero_018_Times-New-Roman_0.9_-5.png",
-      "mae": 53.6764,
-      "within10_percent": 40.68
-    },
-    {
-      "file": "hero_034_Liberation-Serif_0.9_-5.png",
-      "mae": 53.6764,
-      "within10_percent": 40.68
-    },
-    {
-      "file": "hero_002_Georgia_0.9_-5.png",
-      "mae": 53.6764,
-      "within10_percent": 40.68
-    },
-    {
-      "file": "hero_005_Georgia_0.92_-6.png",
-      "mae": 53.8553,
-      "within10_percent": 40.64
-    },
-    {
-      "file": "hero_021_Times-New-Roman_0.92_-6.png",
-      "mae": 53.8553,
-      "within10_percent": 40.64
-    },
-    {
-      "file": "hero_037_Liberation-Serif_0.92_-6.png",
-      "mae": 53.8553,
-      "within10_percent": 40.64
-    },
-    {
       "file": "hero_035_Liberation-Serif_0.9_-4.png",
-      "mae": 53.8614,
-      "within10_percent": 40.63
+      "mae": 39.6618,
+      "within10_percent": 44.82
     },
     {
       "file": "hero_019_Times-New-Roman_0.9_-4.png",
-      "mae": 53.8614,
-      "within10_percent": 40.63
+      "mae": 39.6618,
+      "within10_percent": 44.82
     },
     {
       "file": "hero_003_Georgia_0.9_-4.png",
-      "mae": 53.8614,
-      "within10_percent": 40.63
+      "mae": 39.6618,
+      "within10_percent": 44.82
+    },
+    {
+      "file": "hero_007_Georgia_0.92_-4.png",
+      "mae": 39.7191,
+      "within10_percent": 44.8
+    },
+    {
+      "file": "hero_039_Liberation-Serif_0.92_-4.png",
+      "mae": 39.7191,
+      "within10_percent": 44.8
+    },
+    {
+      "file": "hero_023_Times-New-Roman_0.92_-4.png",
+      "mae": 39.7191,
+      "within10_percent": 44.8
+    },
+    {
+      "file": "hero_031_Times-New-Roman_0.96_-4.png",
+      "mae": 39.7393,
+      "within10_percent": 44.73
+    },
+    {
+      "file": "hero_047_Liberation-Serif_0.96_-4.png",
+      "mae": 39.7393,
+      "within10_percent": 44.73
+    },
+    {
+      "file": "hero_015_Georgia_0.96_-4.png",
+      "mae": 39.7393,
+      "within10_percent": 44.73
+    },
+    {
+      "file": "hero_018_Times-New-Roman_0.9_-5.png",
+      "mae": 39.7852,
+      "within10_percent": 44.77
+    },
+    {
+      "file": "hero_034_Liberation-Serif_0.9_-5.png",
+      "mae": 39.7852,
+      "within10_percent": 44.77
+    },
+    {
+      "file": "hero_002_Georgia_0.9_-5.png",
+      "mae": 39.7852,
+      "within10_percent": 44.77
+    },
+    {
+      "file": "hero_011_Georgia_0.94_-4.png",
+      "mae": 39.8273,
+      "within10_percent": 44.75
+    },
+    {
+      "file": "hero_043_Liberation-Serif_0.94_-4.png",
+      "mae": 39.8273,
+      "within10_percent": 44.75
+    },
+    {
+      "file": "hero_027_Times-New-Roman_0.94_-4.png",
+      "mae": 39.8273,
+      "within10_percent": 44.75
     }
   ],
   "tested": 64
