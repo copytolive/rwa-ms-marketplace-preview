@@ -13,9 +13,9 @@ html,body{margin:0;width:100%;min-height:100%;background:#fff}
 body{overflow-x:hidden}
 #desktopWrap{display:block;position:relative;width:100vw;overflow:hidden;background:#fff}
 #desktopStage{position:absolute;left:0;top:0;width:1672px;height:941px;margin:0!important;transform-origin:top left;background:#fff}
-#desktopFrame{display:block;border:0;width:1672px;height:941px;background:#fff}
+#desktopFrame{display:block;border:0;width:1672px;height:941px;background:#fff;visibility:hidden}
 #mobileWrap{display:none;width:100%;height:100dvh;overflow:hidden;background:#fff}
-#mobileFrame{display:block;border:0;width:100%;height:100dvh;background:#fff}
+#mobileFrame{display:block;border:0;width:100%;height:100dvh;background:#fff;visibility:hidden}
 @media (max-width:1199px){#desktopWrap{display:none!important}#mobileWrap{display:block!important}body{height:100dvh;overflow:hidden}}
 @media (min-width:1200px){#desktopWrap{display:block!important}#mobileWrap{display:none!important}}
 body[data-force="mobile"] #desktopWrap{display:none!important}
@@ -25,8 +25,8 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=21&drawer=20260909aa" title="RWA.ms desktop real-code preview"></iframe></div></div>
-<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909aa" title="RWA.ms mobile real-code preview"></iframe></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=21&drawer=20260909aa&firstpaint=1" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909aa&firstpaint=1" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
 const BUILD='20260909aa';
 try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);location.replace(u.toString())}}catch(_e){}
@@ -169,8 +169,8 @@ function polishMobile(doc){
   const nav=doc.querySelectorAll('.bottomnav button>i');
   replaceNode(nav[1],'bag');replaceNode(nav[2],'building');replaceNode(nav[3],'game');replaceNode(nav[4],'user');
 }
-desktopFrame.addEventListener('load',()=>{inject(desktopFrame,desktopCss);installDesktopDrawer(desktopFrame.contentDocument)});
-mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc)});
+desktopFrame.addEventListener('load',()=>{installDesktopDrawer(desktopFrame.contentDocument);requestAnimationFrame(()=>{desktopFrame.style.visibility='visible';desktopFrame.dataset.firstPaintReady='1'})});
+mobileFrame.addEventListener('load',()=>{const doc=mobileFrame.contentDocument;if(!doc)return;polishMobile(doc);requestAnimationFrame(()=>{mobileFrame.style.visibility='visible';mobileFrame.dataset.firstPaintReady='1'})});
 function viewportWidth(){return Math.round(window.visualViewport?.width||document.documentElement.clientWidth||window.innerWidth||0)}
 function isMobileViewport(){if(forced==='mobile')return true;if(forced==='desktop')return false;const uaMobile=/Android|iPhone|iPod|Mobile|IEMobile|Opera Mini/i.test(navigator.userAgent)||navigator.userAgentData?.mobile===true;return viewportWidth()<=1199||(uaMobile&&viewportWidth()<1366)}
 function fitDesktop(){
@@ -187,7 +187,7 @@ function fitDesktop(){
   desktopWrap.style.width='100vw';
   desktopWrap.style.height=`${Math.ceil(941*scale)}px`;
 }
-function ensureFrame(frame){if(!frame.dataset.loaded){frame.dataset.loaded='1';frame.src=frame.dataset.src}}
+function ensureFrame(frame){if(!frame.dataset.loaded){frame.style.visibility='hidden';frame.dataset.loaded='1';frame.src=frame.dataset.src}}
 function syncMode(){const mobile=isMobileViewport();document.documentElement.dataset.mode=mobile?'mobile':'desktop';ensureFrame(mobile?mobileFrame:desktopFrame);if(!mobile)fitDesktop()}
 const mq=window.matchMedia('(max-width:1199px)');if(mq.addEventListener)mq.addEventListener('change',syncMode);else mq.addListener(syncMode);
 window.addEventListener('resize',syncMode,{passive:true});
