@@ -25,10 +25,10 @@ body[data-force="desktop"] #mobileWrap{display:none!important}
 </style>
 </head>
 <body>
-<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=21&drawer=20260909z" title="RWA.ms desktop real-code preview"></iframe></div></div>
-<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909z" title="RWA.ms mobile real-code preview"></iframe></div>
+<div id="desktopWrap"><div id="desktopStage"><iframe id="desktopFrame" data-src="desktop.html?precision=21&drawer=20260909aa" title="RWA.ms desktop real-code preview"></iframe></div></div>
+<div id="mobileWrap"><iframe id="mobileFrame" data-src="mobile-code.html?responsive=2&build=20260909aa" title="RWA.ms mobile real-code preview"></iframe></div>
 <script>
-const BUILD='20260909z';
+const BUILD='20260909aa';
 try{const u=new URL(location.href);if(u.searchParams.get('build')!==BUILD){u.searchParams.set('build',BUILD);location.replace(u.toString())}}catch(_e){}
 const desktopFrame=document.getElementById('desktopFrame');
 const mobileFrame=document.getElementById('mobileFrame');
@@ -37,7 +37,7 @@ const desktopWrap=document.getElementById('desktopWrap');
 const qs=new URLSearchParams(location.search);
 const forced=qs.get('view');
 if(forced==='mobile'||forced==='desktop')document.body.dataset.force=forced;
-const desktopCss=['desktop-finetune.css?v=092209z','desktop-pass.css?v=092209z','desktop-final.css?v=092209z','desktop-hero-w.css?v=092209z'];
+const desktopCss=['desktop-finetune.css?v=092209aa','desktop-pass.css?v=092209aa','desktop-final.css?v=092209aa','desktop-hero-w.css?v=092209aa'];
 function inject(frame,files){const doc=frame.contentDocument;if(!doc)return;for(const href of files){if(doc.querySelector(`link[data-preview-css="${href}"]`))continue;const link=doc.createElement('link');link.rel='stylesheet';link.href=href;link.dataset.previewCss=href;doc.head.appendChild(link)}}
 function installDesktopDrawer(doc){
   if(!doc||doc.documentElement.dataset.rwaDrawer==='1')return;
