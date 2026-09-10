@@ -14,3 +14,7 @@
 .highlight-grid .portfolio-card strong{display:block;margin-top:8px;font-size:14px}
 .highlight-grid .portfolio-card .pc-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;font-size:8px}
 @media(max-width:760px){.account-topbar>div:nth-child(2){display:none!important}.account-topbar{grid-template-columns:minmax(0,1fr) auto!important}.highlight-grid .portfolio-card img{height:auto;aspect-ratio:16/10}.highlight-grid .portfolio-card .pc-body{padding:9px}.highlight-grid .portfolio-card b{font-size:9.5px}.highlight-grid .portfolio-card strong{font-size:13px}}
+/* 20260911 — fluid desktop account canvas */
+@media(min-width:761px){
+  .account-content{width:100%!important;max-width:none!important;margin:0!important;padding-left:clamp(18px,1.55vw,28px)!important;padding-right:clamp(18px,1.55vw,28px)!important}
+}
