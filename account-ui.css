@@ -18,3 +18,28 @@
 @media(min-width:761px){
   .account-content{width:100%!important;max-width:none!important;margin:0!important;padding-left:clamp(18px,1.55vw,28px)!important;padding-right:clamp(18px,1.55vw,28px)!important}
 }
+
+/* RWA-TYPE-20260911:START */
+html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+@media(min-width:761px){
+ .account-profile-mini small{font-size:10px}.side-label{font-size:9px}.account-nav a{font-size:11.5px}.account-sidebar-footer a,.account-sidebar-footer button{font-size:10.5px}.account-search input{font-size:12px}.account-avatar-btn b{font-size:10.5px}
+ .page-head h1{font-size:38px}.page-head p{font-size:12px}.btn{font-size:10.5px}.eyebrow{font-size:9.5px}.status-pill{font-size:9px}.metric-card span{font-size:9px}.metric-card strong{font-size:25px}.metric-card small{font-size:10px}
+ .panel-head h2{font-size:14px}.panel-head p{font-size:9.5px}.panel-link{font-size:10px}.composition-row span,.composition-row b{font-size:10px}.activity-item b{font-size:10.5px}.activity-item small,.activity-item strong{font-size:9.5px}
+ .quick-card b{font-size:10.5px}.quick-card small{font-size:9px}.data-table th{font-size:9px}.data-table td{font-size:10px}.asset-cell b{font-size:10.5px}.asset-cell small{font-size:9px}.badge,.filter-btn{font-size:9px}
+ .transaction-row b{font-size:10.5px}.transaction-row small{font-size:9px}.detail-brand{font-size:11px}.detail-fact small{font-size:9px}.detail-fact b,.order-box h3{font-size:11.5px}.order-line{font-size:10px}
+ .form-field label{font-size:9px}.form-field input,.form-field select,.form-field textarea{font-size:11px}.step-item b{font-size:10px}.step-item small,.setting-row small,.payment-card small,.timeline-item small{font-size:9.5px}.setting-row b,.payment-card b,.timeline-item b{font-size:10.5px}
+ .balance-card small,.balance-card p{font-size:10px}.modal-note,.toast,.account-page-note,.select-like{font-size:9.5px}.highlight-grid .portfolio-card b{font-size:10.5px}.highlight-grid .portfolio-card small,.highlight-grid .portfolio-card .pc-meta{font-size:9px}
+}
+@media(max-width:760px){
+ .account-search input{font-size:10.5px}.page-head h1{font-size:28px}.page-head p{font-size:10.5px;line-height:1.45}.btn{font-size:9.5px}.eyebrow{font-size:9px}.status-pill{font-size:8.5px}
+ .metric-card span{font-size:8.5px}.metric-card strong{font-size:20px}.metric-card small{font-size:9px}.panel-head h2{font-size:13.5px}.panel-head p{font-size:9px}.panel-link{font-size:9px}.composition-row span,.composition-row b{font-size:9.5px}
+ .activity-item b,.quick-card b,.transaction-row b,.detail-fact b,.order-box h3,.setting-row b,.payment-card b,.timeline-item b{font-size:10px}.activity-item small,.quick-card small,.transaction-row small,.detail-fact small,.step-item small,.setting-row small,.payment-card small,.timeline-item small{font-size:9px}
+ .portfolio-card b,.highlight-grid .portfolio-card b{font-size:10px}.portfolio-card small,.portfolio-card .pc-meta,.highlight-grid .portfolio-card small,.highlight-grid .portfolio-card .pc-meta{font-size:8.8px}.portfolio-card strong,.highlight-grid .portfolio-card strong{font-size:14px}
+ .form-field label{font-size:8.8px}.form-field input,.form-field select,.form-field textarea{font-size:10.5px}.order-line,.modal-note,.toast,.account-page-note,.select-like{font-size:9.5px}.mobile-account-nav a{font-size:9px}
+}
+/* RWA-TYPE-20260911:END */
+/* RWA-TYPE-MICROFLOOR-20260911 */
+@media(min-width:761px){.account-content small{font-size:9.5px}.metric-card span,.status-pill,.badge{font-size:9px}}
+@media(max-width:760px){.account-content small{font-size:9px}.metric-card span,.status-pill,.badge{font-size:9px}.portfolio-card .pc-meta,.highlight-grid .portfolio-card .pc-meta{font-size:9px}.mobile-account-nav a{font-size:9px!important}}
+/* RWA-TYPE-FINAL-FLOOR-20260911 */
+@media(max-width:760px){.highlight-grid .portfolio-card small,.filter-btn,.form-field label,.progress-card p{font-size:9px!important}}

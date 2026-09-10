@@ -38,3 +38,47 @@ body[data-page="support"] .feature-card[type="button"],body[data-page="support"]
   body[data-page="discover"] .discovery-layout{grid-template-columns:232px minmax(0,1fr);gap:14px}
   body[data-page="discover"] #discover-grid{grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:12px}
 }
+
+/* RWA-TYPE-20260911:START */
+html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+@media(min-width:861px){
+  .mp-search input{font-size:12px}.mp-nav a,.mp-account-btn{font-size:10.5px}.crumbs{font-size:9.5px}.crumbs i{font-size:7px}
+  .page-hero h1{font-size:42px;line-height:1.02}.page-hero p,.category-copy p{font-size:12px;line-height:1.55}.btn{font-size:10px}.pill,.eyebrow{font-size:9px}
+  .panel-head h2{font-size:14px}.panel-head p{font-size:9.5px}.filter-section h3{font-size:10px}.filter-check{font-size:10.5px;min-height:31px}.price-range input,.sort-select{font-size:9.5px}.discover-toolbar-left{font-size:10px}
+  .category-chip b{font-size:10.5px}.category-chip small{font-size:9px}.product-badge{font-size:8.5px}.product-card h3{font-size:12px}.product-brand{font-size:9.5px}.product-price small,.product-meta{font-size:9px}.product-actions .btn{font-size:9.5px}
+  .section-title h2{font-size:28px}.section-title p,.link{font-size:9.5px}.feature-card b{font-size:12px}.feature-card small{font-size:9.5px;line-height:1.5}
+  .asset-title h1{font-size:38px}.asset-title p{font-size:10.5px}.trust-chip{font-size:9px}.fact small{font-size:9px}.fact b{font-size:11.5px}.buy-line,.order-line{font-size:10px}.detail-tabs button{font-size:10px}
+  .copy-card h3{font-size:12.5px}.copy-card p{font-size:10.5px}.issuer-card b{font-size:11px}.issuer-card small,.doc-row small{font-size:9px}.doc-row b{font-size:10.5px}.folder-btn{font-size:10px}.folder-count{font-size:8.5px}
+  .compare-table th,.compare-table td{font-size:10px}.notify-filter button{font-size:10px}.notification-item b{font-size:11px}.notification-item p{font-size:9.5px}.notification-time{font-size:9px}
+  .issuer-hero p{font-size:11px}.issuer-metric small{font-size:9px}.document-card h3{font-size:11px}.document-card p{font-size:9px}.step{font-size:9px}.summary-product b{font-size:11px}.summary-product small,.radio-card small{font-size:9px}.radio-card b{font-size:10.5px}
+  .checkout-result p,.reward-hero small,.reward-hero p,.help-hero p{font-size:10px}.help-card b{font-size:11px}.help-card small,.faq-answer{font-size:9.5px}.faq-question{font-size:10.5px}
+  .article-art span{font-size:9px}.article-body h3{font-size:11.5px}.article-body p,.glossary-row p{font-size:9.5px}.glossary-row b{font-size:10.5px}.composer textarea,.post-text{font-size:10px}.post-head b{font-size:10.5px}.post-head small,.leader-row small{font-size:9px}.post-actions button,.leader-row b{font-size:9.5px}
+  .choice-card b{font-size:10.5px}.choice-card small{font-size:9px}.state-card h3{font-size:11px}.state-center b{font-size:10.5px}.state-center p,.toast,.offline-banner{font-size:9.5px}
+  .form-field label{font-size:9px}.form-field input,.form-field select,.form-field textarea{font-size:10.5px}.modal-note,.activity-item small,.badge{font-size:9px}.composition-row span,.composition-row b,.activity-item b{font-size:10px}
+  .ticket-row b,.team-card b,.mini-asset b{font-size:10px}.ticket-row small,.team-card small,.mini-asset small{font-size:9px}.public-profile-hero p{font-size:10.5px}
+}
+@media(max-width:860px){
+  .mp-search input{font-size:10.5px}.page-hero h1{font-size:30px;line-height:1.02}.page-hero p,.category-copy p{font-size:11px;line-height:1.5}.btn{font-size:10px}.pill,.eyebrow{font-size:9px}
+  .panel-head h2{font-size:13.5px}.panel-head p{font-size:9.5px}.category-chip b{font-size:10.5px}.category-chip small{font-size:9px;line-height:1.35}.product-badge{font-size:8.5px}.product-card h3{font-size:10.5px}.product-brand{font-size:8.8px}.product-price strong{font-size:16px}.product-price small,.product-meta{font-size:8.6px}.product-actions .btn{font-size:9px}
+  .section-title h2{font-size:24px}.section-title p,.link{font-size:9.5px}.feature-card b{font-size:11.5px}.feature-card small{font-size:9.5px;line-height:1.45}.crumbs{font-size:9px}.detail-tabs button{font-size:9.5px}
+  .asset-title h1{font-size:31px}.asset-title p{font-size:10px}.trust-chip{font-size:8.8px}.fact small{font-size:8.8px}.fact b{font-size:10.5px}.buy-line,.order-line{font-size:9.5px}.copy-card h3{font-size:11.5px}.copy-card p{font-size:10px}
+  .issuer-card b,.doc-row b,.notification-item b,.document-card h3,.help-card b,.faq-question,.article-body h3,.glossary-row b,.post-head b,.leader-row b,.choice-card b,.state-center b{font-size:10.5px}
+  .issuer-card small,.doc-row small,.notification-item p,.notification-time,.document-card p,.summary-product small,.radio-card small,.help-card small,.faq-answer,.article-art span,.article-body p,.glossary-row p,.post-head small,.post-actions button,.leader-row small,.choice-card small,.state-center p,.ticket-row small,.team-card small,.mini-asset small{font-size:9px}
+  .compare-table th,.compare-table td,.notify-filter button,.doc-category button,.radio-card b,.form-field input,.form-field select,.form-field textarea,.composition-row span,.composition-row b,.activity-item b{font-size:9.5px}
+  .form-field label,.modal-note,.activity-item small,.badge,.step,.mobile-bottom a{font-size:8.8px}.toast,.offline-banner{font-size:9.5px}
+}
+/* RWA-TYPE-20260911:END */
+/* RWA-TYPE-MICROFLOOR-20260911 */
+@media(min-width:861px){
+  .mp-main small{font-size:9.5px}.product-badge{font-size:9px}.team-card>span{font-size:9px}.community-avatar{font-size:10px}
+}
+@media(max-width:860px){
+  .mp-main small{font-size:9px}.product-badge{font-size:9px}.product-brand,.product-price small,.product-meta{font-size:9px}.compare-slot small,.compare-slot.empty,.issuer-metric small,.team-card>span{font-size:9px}.mobile-bottom a{font-size:9px!important}
+}
+/* RWA-TYPE-FINAL-FLOOR-20260911 */
+@media(max-width:860px){.compare-slot small,.trust-chip{font-size:9px!important}}
+/* RWA-MOBILE-WIDTH-GUARD-20260911 */
+@media(max-width:860px){
+ .detail-layout,.detail-layout>section,.sticky-buy,.gallery,.gallery-main,.gallery-thumbs,.detail-tabs,.tab-panel,.overview-grid,.copy-card{min-width:0!important;max-width:100%!important;width:100%!important}
+ .gallery-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))!important}.gallery-thumb{min-width:0!important;width:auto!important}
+}

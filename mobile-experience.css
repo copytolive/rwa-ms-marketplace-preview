@@ -528,3 +528,16 @@ body{touch-action:pan-y pinch-zoom!important}
   .m-search input{font-size:12.5px!important}
 }
 @media(max-width:360px){.m-search-logo{width:78px!important}.m-search{gap:7px!important;padding:0 9px!important}.m-search input{font-size:12px!important}}
+
+/* RWA-TYPE-20260911:START */
+.mobile-page{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+@media(max-width:760px){
+ .m-search input{font-size:12px!important}.m-hero .eyebrow{font-size:10px!important}.m-hero p{font-size:12px!important;line-height:1.45!important}.m-hero button{font-size:11px!important}
+ .m-usp span,.m-usp small{font-size:10px!important;line-height:1.25!important}.section-intro .kicker{font-size:10px!important}.section-intro p{font-size:10.5px!important;line-height:1.45!important}
+ .m-verticals h3{font-size:18px!important}.m-verticals p{font-size:10.5px!important;line-height:1.4!important}.category-count{font-size:9.5px!important}.m-featured-head h2{font-size:22px!important}.m-featured-head p{font-size:10.5px!important}
+ .m-tabs button{font-size:10px!important}.asset-card h4{font-size:11px!important}.asset-card p{font-size:9.5px!important}.asset-card strong{font-size:16px!important}.holders small,.sold span,.discount{font-size:9px!important}.asset-card .detail{font-size:10px!important}
+ .m-chart-top span,.m-stats span,.m-stats small,.ranges button,.m-delta{font-size:9.5px!important}.bottomnav button{font-size:9px!important}
+}
+/* RWA-TYPE-20260911:END */
+/* RWA-TYPE-MICROFLOOR-20260911 */
+@media(max-width:760px){.mobile-page small{font-size:9.5px!important}.m-product-badge{font-size:9px!important}.sold span{font-size:9px!important}.bottomnav button span{font-size:9px!important}}

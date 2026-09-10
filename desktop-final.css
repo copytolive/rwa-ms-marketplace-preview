@@ -139,3 +139,14 @@
 .hero-fashion .fashion-visual:after{content:''!important;position:absolute!important;z-index:2!important;left:0!important;right:0!important;bottom:0!important;height:74px!important;background:linear-gradient(180deg,transparent,rgba(8,28,29,.24))!important;pointer-events:none!important}
 .fashion-caption{position:absolute!important;z-index:5!important;right:17px!important;bottom:15px!important;color:#fff!important;text-align:right!important;text-shadow:0 2px 12px rgba(0,0,0,.24)!important}.fashion-caption span{display:block!important;font-size:7.5px!important;font-weight:800!important;letter-spacing:.18em!important;margin-bottom:3px!important}.fashion-caption b{display:block!important;font-family:Georgia,'Times New Roman',serif!important;font-size:15px!important;line-height:1!important;font-weight:700!important}
 .hero-fashion .hero-right{width:154px!important;background:linear-gradient(180deg,#eadfd4,#eee4da)!important}
+
+/* RWA-TYPE-20260911:START */
+@media(min-width:861px){
+ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+ .topbar,.mainnav,.signin,.join,.lang,.search input{font-size:12px!important}.sidebar,.side-title,.side-simple,.side-group a,.side-promo{font-size:11px!important}
+ .hero .eyebrow{font-size:10px!important}.hero-copy p{font-size:15px!important;line-height:1.45!important}.hero-actions button{font-size:11px!important}.hero-right span,.hero-right small{font-size:10px!important}
+ .gateway-kicker,.gateway-chips span{font-size:9.5px!important}.gateway-content p{font-size:11px!important;line-height:1.45!important}.featured-head p,.verticals p{font-size:11px!important}
+ .tabs button,.viewall,.view-all-btn{font-size:11px!important}.asset-card h4{font-size:14px!important}.asset-card p{font-size:10.5px!important}.asset-card strong{font-size:18px!important}.holders small,.sold span,.discount{font-size:10px!important}.asset-card .detail{font-size:11px!important}
+ .chart-head span,.ranges button,.delta,.stat-grid span,.stat-grid small,.trustbar,.trust-note{font-size:10.5px!important}
+}
+/* RWA-TYPE-20260911:END */
